@@ -1,1 +1,1 @@
-# STS_kelompok_6
+![cuumbina](cuumbina.jpg)
