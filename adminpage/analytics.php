@@ -6,7 +6,7 @@
     <title>Analytics Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- Base & Reset --- */
+
         * {
             margin: 0;
             padding: 0;
@@ -17,13 +17,14 @@
         body {
             display: flex;
             height: 100vh;
-            background-color: #E6E8F4; /* Light bluish-gray background */
+            background-color: #E6E8F4;
             color: #333;
         }
 
+
         .sidebar {
             width: 250px;
-            background-color: #272C39; 
+            background-color: #272C39;
             color: white;
             display: flex;
             flex-direction: column;
@@ -89,6 +90,7 @@
             font-size: 0.9rem;
         }
 
+    
         .main-content {
             flex-grow: 1;
             padding: 20px 40px;
@@ -103,6 +105,7 @@
             margin-bottom: 20px;
         }
 
+    
         .header {
             display: flex;
             justify-content: space-between;
@@ -137,6 +140,7 @@
             border-radius: 5px;
         }
 
+    
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -175,6 +179,8 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         .table-header-title {
@@ -183,6 +189,11 @@
             font-weight: bold;
             color: #272C39;
             border-bottom: 1px solid #E5E7EB;
+        }
+
+        .table-scroll-wrapper {
+            max-height: 250px;
+            overflow-y: auto;
         }
 
         table {
@@ -195,11 +206,15 @@
             text-align: left;
         }
 
+        
         th {
             background-color: #F8F9FA;
             color: #6B7280;
             font-weight: 600;
             border-bottom: 1px solid #E5E7EB;
+            position: sticky; 
+            top: 0;
+            z-index: 10;
         }
 
         td {
@@ -213,7 +228,7 @@
             cursor: pointer;
         }
 
-        /* Table Footer */
+
         .table-footer {
             padding: 15px 20px;
             display: flex;
@@ -221,11 +236,27 @@
             color: #6B7280;
             font-size: 0.9rem;
             background-color: #F8F9FA;
+            border-top: 1px solid #E5E7EB; 
         }
         
         .view-all {
             text-decoration: none;
             color: #6B7280;
+        }
+
+
+        .table-scroll-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+        .table-scroll-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .table-scroll-wrapper::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .table-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
         }
     </style>
 </head>
@@ -237,7 +268,7 @@
                 <div class="logo-circle"></div>
                 <span>Logo</span>
             </div>
-            <nav>
+            <nav class="nav-menu">
                 <a href="#" class="nav-item"><i class="fa-solid fa-house"></i> Homepage</a>
                 <a href="#" class="nav-item"><i class="fa-solid fa-tags"></i> Category</a>
                 <a href="#" class="nav-item"><i class="fa-solid fa-users"></i> Teams</a>
@@ -267,7 +298,6 @@
 
         <div class="cards-grid">
             <?php
-            // Mock Data for statistics
             $stats = [
                 ['title' => 'Active Users', 'value' => '999', 'icon' => 'fa-users'],
                 ['title' => 'New Posts', 'value' => '999', 'icon' => 'fa-newspaper'],
@@ -292,42 +322,47 @@
 
         <div class="table-container">
             <div class="table-header-title">Daftar Pengguna</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Tanggal</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Mock Data for table rows
-                    $users = [
-                        ['id' => '1', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '29, Febuari 2067'],
-                        ['id' => '1', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '29, Febuari 2067'],
-                        ['id' => '1', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '29, Febuari 2067'],
-                        ['id' => '1', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '29, Febuari 2067'],
-                        ['id' => '1', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '29, Febuari 2067'],
-                    ];
-
-                    foreach ($users as $user) {
-                        echo '
+            
+            <div class="table-scroll-wrapper">
+                <table>
+                    <thead>
                         <tr>
-                            <td>' . $user['id'] . '</td>
-                            <td>' . $user['nama'] . '</td>
-                            <td>' . $user['kelas'] . '</td>
-                            <td><i>' . $user['tanggal'] . '</i></td>
-                            <td><i class="fa-solid fa-thumbtack action-icon"></i></td>
-                        </tr>';
-                    }
-                    ?>
-                </tbody>
-            </table>
-            <div class="table-footer">
-                <span>Showing 5 out of 67 users</span>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Kelas</th>
+                            <th>Tanggal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        
+                        $users = [
+                            ['id' => '1', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '29, Febuari 2067'],
+                            ['id' => '2', 'nama' => 'IPS', 'kelas' => 'XI TKJ 1', 'tanggal' => '28, Febuari 2067'],
+                            ['id' => '3', 'nama' => 'Bahasa', 'kelas' => 'X TKJ 3', 'tanggal' => '27, Febuari 2067'],
+                            ['id' => '4', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '26, Febuari 2067'],
+                            ['id' => '5', 'nama' => 'IPS', 'kelas' => 'XII TKJ 2', 'tanggal' => '25, Febuari 2067'],
+                            ['id' => '6', 'nama' => 'IPA', 'kelas' => 'XI TKJ 1', 'tanggal' => '24, Febuari 2067'],
+                            ['id' => '7', 'nama' => 'Bahasa', 'kelas' => 'X TKJ 1', 'tanggal' => '23, Febuari 2067'],
+                            ['id' => '8', 'nama' => 'IPA', 'kelas' => 'XI TKJ 2', 'tanggal' => '22, Febuari 2067'],
+                        ];
+
+                        foreach ($users as $user) {
+                            echo '
+                            <tr>
+                                <td>' . $user['id'] . '</td>
+                                <td>' . $user['nama'] . '</td>
+                                <td>' . $user['kelas'] . '</td>
+                                <td><i>' . $user['tanggal'] . '</i></td>
+                                <td><i class="fa-solid fa-thumbtack action-icon"></i></td>
+                            </tr>';
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div> <div class="table-footer">
+                <span>Showing 8 out of 67 users</span>
                 <a href="#" class="view-all">View All ></a>
             </div>
         </div>

@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="adminpage/analytic.php">a</a>
+    <a href="adminpage/analytics.php">a</a>
 </body>
 </html>
