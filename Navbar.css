@@ -1,0 +1,36 @@
+body{
+    margin:0;
+    background:#1f2933;
+    font-family:sans-serif;
+}
+
+.sidebar{
+    width:70.31px;
+    height:100vh;
+    background:#26323f;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:150px;
+    gap:25px;
+}
+
+img{
+    width:32px;
+    height:32px;
+    transition:0.2s;
+}
+.sidebar a{
+    color:#cfd8dc;
+    font-size:20px;
+    text-decoration:none;
+    transition:0.2s;
+}
+
+.sidebar a:hover{
+    color:#00ADB5;
+}
+
+.sidebar a.active{
+    color:#00ADB5;
+}
