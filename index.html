@@ -3,23 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>STS Kelompok 6</title>
-    <!-- main stylesheet for sidebar and other components -->
     <link rel="stylesheet" href="./Navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
-    <!-- include the sidebar component -->
-    <!-- you can use server-side includes, JS fetch, or simply paste the markup -->
-    <div class="sidebar">
-        <a href="#"><img src="./icons/home.png" alt="home"></a>
-        <a href="#"><img src="./icons/tag.png" alt="tag"></a>
-        <a href="#"><img src="./icons/team.png" alt="team"></a>
-        <a href="#"><img src="./icons/bookmark.png" alt="bookmark"></a>
-        <a href="#"><img src="./icons/profile.png" alt="profile"></a>
+    <div class="layout">
+        <div class="sidebar" id="sidebar">
+            <!-- <button id="toggle">☰</button> -->
+            <a href="#">
+                <iconify-icon icon="lucide:home"></iconify-icon>
+                <span>Homepage</span>
+            </a>
+            <a href="#">
+                <iconify-icon icon="mingcute:tag-line"></iconify-icon>
+                <span>Tag</span>
+            </a>
+            <a href="#">
+                <iconify-icon icon="ri:team-fill"></iconify-icon>
+                <span>Team</span>
+            </a>
+            <a href="#">
+                <iconify-icon icon="material-symbols:bookmark"></iconify-icon>
+                <span>Bookmark</span>
+            </a>
+            <a href="#">
+                <iconify-icon icon="mingcute:user-4-line"></iconify-icon>
+                <span>Profile</span>
+            </a>
+        </div>
+
+        <main>
+            <h1>Welcome to STS Kelompok 6</h1>
+            <p>Content goes here…</p>   
+        </main>
     </div>
 
-    <main style="margin-left:80px; padding:20px; color:#fff;">
-        <h1>Welcome to STS Kelompok 6</h1>
-        <p>Content goes here…</p>   
-    </main>
+<script>
+    const sidebar = document.getElementById("sidebar");
+    const toggle = document.getElementById("toggle");
+
+    // Toggle when clicking the sidebar background (not when clicking links)
+    sidebar.addEventListener("click", (event) => {
+        if (event.target === sidebar || event.target === toggle) {
+            sidebar.classList.toggle("open");
+        }
+    });
+</script>
 </body>
 </html>
