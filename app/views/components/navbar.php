@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>STS Kelompok 6</title>
-    <link rel="stylesheet" href="./Navbar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="/css/Navbar.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-</head>
-<body>
-    <div class="layout">
-        <div class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar">
             <!-- <button id="toggle">☰</button> -->
             <a href="#">
                 <iconify-icon icon="lucide:home"></iconify-icon>
@@ -33,13 +25,7 @@
             </a>
         </div>
 
-        <main>
-            <h1>Welcome to STS Kelompok 6</h1>
-            <p>Content goes here…</p>   
-        </main>
-    </div>
-
-<script>
+        <script>
     const sidebar = document.getElementById("sidebar");
     const toggle = document.getElementById("toggle");
 
@@ -50,5 +36,3 @@
         }
     });
 </script>
-</body>
-</html>
