@@ -1,8 +1,7 @@
 body{
     margin:0;
-    background:#1f2933;
     font-family:sans-serif;
-    min-height:100vh;
+
 }
 
 .layout{
@@ -17,7 +16,6 @@ body{
     background:#26323f;
     display:flex;
     flex-direction:column;
-
     justify-content:flex-start;
     padding-top:150px;
     gap:25px;
