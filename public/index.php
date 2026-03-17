@@ -19,6 +19,7 @@ $router->add("GET", "/register", "AuthController", "registerView");
 
 
 
+
 $router->run();
 
 ?>

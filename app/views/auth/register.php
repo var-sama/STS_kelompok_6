@@ -1,13 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - WebIn</title>
+  <meta charset="UTF-8">
+  <title>Web-In Login</title>
+  <link rel="stylesheet" href="/css/Register.css">
 </head>
 <body>
-    <h1>Ini adalah halaman register</h1>
 
-    <a href="/login">Sudah Punya Akun</a>
+
+  <a href="#" class="back">&lt; Kembali</a>
+
+  <div class="wrapper">
+
+
+    <div class="logo-card">
+      <h1>W<span>-in</span></h1>
+    </div>
+
+    <div class="login-card">
+      <h2>Masuk Sebagai<br>Bagian <span>Web-In</span></h2>
+
+      <label>Username</label>
+      <input type="text" id="username">
+
+      <label>Kelas</label>
+      <select id="kelas">
+        <option>X</option>
+        <option>XI</option>
+        <option>XII</option>
+        
+
+      </select>
+
+      <label>Password</label>
+      <input type="password" id="password">
+
+      <div class="dots">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      
+
+      <button onclick="login()">Masuk</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
