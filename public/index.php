@@ -17,7 +17,8 @@ $router->add("GET", "/login", "AuthController", "loginView");
 // Register
 $router->add("GET", "/register", "AuthController", "registerView");
 
-
+// Register
+$router->add("GET", "/Problemcreate", "ProblemController", "ProblemcreateView");
 
 $router->run();
 
