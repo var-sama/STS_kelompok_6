@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/landing.css">
+     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <title>landing page</title>
 </head>
 <body>
     <div class="layout">
         <?php require_once '../app/views/components/navbar.php'; ?>
         <main>
-            <div class="content-wrapper">
-                <div class="search-container">
+             <div class="search-container">
                     <input type="text" placeholder="Cari masalah">
                 </div>
+            <div class="content-wrapper">
 
                 <div class="post-scroll">
                     <div class="post-area">
@@ -23,7 +24,7 @@
                                 <div class="user"><h3>GPU</h3><span>XI TKJ 2</span></div>
                             </div>
                             <div class="post-text">Masalah pertama: browser error saat runtime.</div>
-                            <div class="post-bottom"><div class="actions"><span>Like</span><span>Share</span><span>Bookmark</span><span>Comment</span></div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">67</span></div></div>
+                            <div class="post-bottom"><div class="actions"><span><button><iconify-icon icon="mdi:like-outline"></iconify-icon>Like</button></span><span>Share</span><span>Bookmark</span><span>Comment</span></div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">67</span></div></div>
                         </div>
                         <div class="post">
                             <div class="post-header"><div class="profile"></div><div class="user"><h3>Eva</h3><span>XI RPL 1</span></div></div>
@@ -47,11 +48,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="create-container">
+            </div>
+                            <div class="create-container">
                     <input type="text" placeholder="Ciptakan masalah baru">
                 </div>
-            </div>
         </main>
     </div>
 </body>

@@ -7,7 +7,19 @@ html, body {
     font-family: sans-serif;
     background:#f6f7fb;
 }
-
+button{
+    background:none;
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    cursor:pointer;
+    font-size:14px;
+}
+iconify-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align:middle;
+}
 .layout {
     display:flex;
     min-height:100vh;
@@ -21,12 +33,48 @@ html, body {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     flex:1;
     overflow:hidden;
     padding:20px;
-    margin-left: -25px;
-    margin-right: 5px;
+    margin:0;
     box-sizing:border-box;
+}
+
+.search-container {
+    width:100%;
+    max-width: 1000px;
+    margin: 0 auto 14px;
+    background:#fff;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 12px;
+    color:#222;
+    border:1px solid #ddd;
+    box-shadow:0 1px 6px rgba(0,0,0,0.06);
+}
+
+.search-container i {
+    color:#eeeeee;
+    font-size:24px;
+    width:24px;
+    height:24px;
+    line-height:24px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.search-container input {
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-size:14px;
+    color:#111;
 }
 
 .content-wrapper {
@@ -50,6 +98,8 @@ main {
 
 .search-container,
 .create-container {
+    width:100%;
+    margin:0 auto;
     background:#222831;
     border:1px solid #fff;
     border-radius:10px;
@@ -171,6 +221,27 @@ main {
 .post-bottom .tags span,
 .post-bottom .views {
     color:#fff;
+}
+
+.post-bottom .actions button {
+    border:none;
+    background:transparent;
+    color:#fff;
+    padding:0;
+    margin:0;
+    font-size:13px;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+}
+
+.post-bottom .actions iconify-icon,
+.post-bottom .actions i {
+    font-size:24px;
+    width:24px;
+    height:24px;
+    color:#eeeeee;
 }
 
 .actions span {
