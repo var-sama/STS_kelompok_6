@@ -25,14 +25,26 @@
             </a>
         </div>
 
-        <script>
+
+<script>
     const sidebar = document.getElementById("sidebar");
     const toggle = document.getElementById("toggle");
-
     // Toggle when clicking the sidebar background (not when clicking links)
     sidebar.addEventListener("click", (event) => {
         if (event.target === sidebar || event.target === toggle) {
             sidebar.classList.toggle("open");
         }
     });
+
+
+    const links = document.querySelectorAll(".sidebar a");
+    links.forEach(link => {
+    link.addEventListener("click", () => {
+        // hapus semua active
+        links.forEach(l => l.classList.remove("active"));
+
+        // tambahin ke yg diklik
+        link.classList.add("active");
+    });
+});
 </script>

@@ -12,9 +12,9 @@
         <?php require_once '../app/views/components/navbar.php'; ?>
         <main>
              <div class="search-container">
+                    <iconify-icon icon="material-symbols:search"></iconify-icon>
                     <input type="text" placeholder="Cari masalah">
                 </div>
-            <div class="content-wrapper">
 
                 <div class="post-scroll">
                     <div class="post-area">
@@ -24,34 +24,72 @@
                                 <div class="user"><h3>GPU</h3><span>XI TKJ 2</span></div>
                             </div>
                             <div class="post-text">Masalah pertama: browser error saat runtime.</div>
-                            <div class="post-bottom"><div class="actions"><span><button><iconify-icon icon="mdi:like-outline"></iconify-icon>Like</button></span><span>Share</span><span>Bookmark</span><span>Comment</span></div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">67</span></div></div>
+                            <div class="post-bottom"><div class="actions">
+                                <span><button><iconify-icon icon="mdi:like-outline"></iconify-icon>Like</button></span>
+                                <span><button><iconify-icon icon="mdi:share"></iconify-icon>Share</button></span>
+                                <span><button><iconify-icon icon="material-symbols:bookmark-outline"></iconify-icon>Bookmark</button></span>
+                                <span><button><img src="/icons/comment.png" alt="" class="comment"></iconify-icon>Comment</button></span>
+                            </div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">Febuary 30th, 2067</span></div></div>
                         </div>
                         <div class="post">
-                            <div class="post-header"><div class="profile"></div><div class="user"><h3>Eva</h3><span>XI RPL 1</span></div></div>
-                            <div class="post-text">Masalah kedua: error database connection di XAMPP.</div>
-                            <div class="post-bottom"><div class="actions"><span>Like</span><span>Share</span><span>Bookmark</span><span>Comment</span></div><div class="tags"><span class="tag">Database</span><span class="tag">XAMPP</span><span class="views">120</span></div></div>
+                            <div class="post-header">
+                                <div class="profile"></div>
+                                <div class="user"><h3>CPU</h3><span>XI TKJ 2</span></div>
+                            </div>
+                            <div class="post-text">Masalah kedua: laptop tidak bisa booting.</div>
+                            <div class="post-bottom"><div class="actions">
+                                <span><button><iconify-icon icon="mdi:like-outline"></iconify-icon>Like</button></span>
+                                <span><button><iconify-icon icon="mdi:share"></iconify-icon>Share</button></span>
+                                <span><button><iconify-icon icon="material-symbols:bookmark-outline"></iconify-icon>Bookmark</button></span>
+                                <span><button><img src="/icons/comment.png" alt="" class="comment"></iconify-icon>Comment</button></span>
+                            </div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">Febuary 30th, 2067</span></div></div>
                         </div>
                         <div class="post">
-                            <div class="post-header"><div class="profile"></div><div class="user"><h3>Budi</h3><span>XII TKJ 3</span></div></div>
-                            <div class="post-text">Masalah ketiga: CSS layout tidak responsif di mobile.</div>
-                            <div class="post-bottom"><div class="actions"><span>Like</span><span>Share</span><span>Bookmark</span><span>Comment</span></div><div class="tags"><span class="tag">CSS</span><span class="tag">Responsif</span><span class="views">235</span></div></div>
+                            <div class="post-header">
+                                <div class="profile"></div>
+                                <div class="user"><h3>GPU</h3><span>XI TKJ 2</span></div>
+                            </div>
+                            <div class="post-text">Masalah pertama: browser error saat runtime.</div>
+                            <div class="post-bottom"><div class="actions">
+                                <span><button><iconify-icon icon="mdi:like-outline"></iconify-icon>Like</button></span>
+                                <span><button><iconify-icon icon="mdi:share"></iconify-icon>Share</button></span>
+                                <span><button><iconify-icon icon="material-symbols:bookmark-outline"></iconify-icon>Bookmark</button></span>
+                                <span><button><img src="/icons/comment.png" alt="" class="comment"></iconify-icon>Comment</button></span>
+                            </div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">Febuary 30th, 2067</span></div></div>
                         </div>
                         <div class="post">
-                            <div class="post-header"><div class="profile"></div><div class="user"><h3>Carol</h3><span>XII RPL 2</span></div></div>
-                            <div class="post-text">Masalah keempat: notifikasi JS tidak muncul di production.</div>
-                            <div class="post-bottom"><div class="actions"><span>Like</span><span>Share</span><span>Bookmark</span><span>Comment</span></div><div class="tags"><span class="tag">JavaScript</span><span class="tag">Notifikasi</span><span class="views">482</span></div></div>
+                            <div class="post-header">
+                                <div class="profile"></div>
+                                <div class="user"><h3>GPU</h3><span>XI TKJ 2</span></div>
+                            </div>
+                            <div class="post-text">Masalah pertama: browser error saat runtime.</div>
+                            <div class="post-bottom"><div class="actions">
+                                <span><button><iconify-icon icon="mdi:like-outline"></iconify-icon>Like</button></span>
+                                <span><button><iconify-icon icon="mdi:share"></iconify-icon>Share</button></span>
+                                <span><button><iconify-icon icon="material-symbols:bookmark-outline"></iconify-icon>Bookmark</button></span>
+                                <span><button><img src="/icons/comment.png" alt="" class="comment"></iconify-icon>Comment</button></span>
+                            </div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">Febuary 30th, 2067</span></div></div>
                         </div>
                         <div class="post">
-                            <div class="post-header"><div class="profile"></div><div class="user"><h3>Dina</h3><span>XII TKJ 1</span></div></div>
-                            <div class="post-text">Masalah kelima: server timeout saat upload file.</div>
-                            <div class="post-bottom"><div class="actions"><span>Like</span><span>Share</span><span>Bookmark</span><span>Comment</span></div><div class="tags"><span class="tag">Server</span><span class="tag">File</span><span class="views">94</span></div></div>
+                            <div class="post-header">
+                                <div class="profile"></div>
+                                <div class="user"><h3>GPU</h3><span>XI TKJ 2</span></div>
+                            </div>
+                            <div class="post-text">Masalah pertama: browser error saat runtime.</div>
+                            <div class="post-bottom"><div class="actions">
+                                <span><button><iconify-icon icon="mdi:like-outline"></iconify-icon>Like</button></span>
+                                <span><button><iconify-icon icon="mdi:share"></iconify-icon>Share</button></span>
+                                <span><button><iconify-icon icon="material-symbols:bookmark-outline"></iconify-icon>Bookmark</button></span>
+                                <span><button><img src="/icons/comment.png" alt="" class="comment"></iconify-icon>Comment</button></span>
+                            </div><div class="tags"><span class="tag">IPA</span><span class="tag">XI TKJ 2</span><span class="views">Febuary 30th, 2067</span></div></div>
                         </div>
                     </div>
                 </div>
-            </div>
-                            <div class="create-container">
+                 <div class="create-container">
+                    <span>+</span>
                     <input type="text" placeholder="Ciptakan masalah baru">
                 </div>
+                        
         </main>
     </div>
 </body>

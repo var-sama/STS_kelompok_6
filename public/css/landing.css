@@ -25,7 +25,7 @@ iconify-icon {
     min-height:100vh;
     height:100vh;
     overflow:hidden;
-    gap:50px;
+
 }
 
 .sidebar {
@@ -35,86 +35,103 @@ iconify-icon {
 main {
     display: flex;
     flex-direction: column;
-    flex:1;
-    overflow:hidden;
-    padding:20px;
+    flex: 1;
+    height: 100vh;
+    /* overflow:hidden; */
+    padding:0;
     margin:0;
     box-sizing:border-box;
+    position:relative;
+    /* padding-bottom:110px; */
 }
 
 .search-container {
     width:100%;
-    max-width: 1000px;
     margin: 0 auto 14px;
     background:#fff;
     border-radius:10px;
     display:flex;
+    justify-content: center;
     align-items:center;
-    gap:10px;
+    position: relative;
     padding:8px 12px;
     color:#222;
-    border:1px solid #ddd;
     box-shadow:0 1px 6px rgba(0,0,0,0.06);
 }
 
-.search-container i {
-    color:#eeeeee;
-    font-size:24px;
-    width:24px;
-    height:24px;
-    line-height:24px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+.search-container iconify-icon {
+    position:absolute;
+    left:15px;
+    top:55%;
+    transform:translateY(-50%);
+    color:#aaa;
+    font-size:32px;
+    pointer-events:none;    
 }
 
-.search-container input {
+.create-container span {
+    position:absolute;
+    font-size: 40px;
+    left:28px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#00ADB5;
+    border: 3px solid #00ADB5;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    pointer-events:none;    
+}
+
+.search-container input{
     width:100%;
-    border:none;
-    outline:none;
-    background:transparent;
-    font-size:14px;
-    color:#111;
+    box-sizing:border-box;
 }
 
-.content-wrapper {
+.create-container input {
     width:100%;
-    max-width:100%;
-    height:100%;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+    height: 50px;
+    box-sizing:border-box;
 }
 
-.search-container,
-.create-container,
 .post-scroll,
-.post {
+.post,
+.create-container {
     width:100%;
     max-width:100%;
     margin:0;
 }
 
-.search-container,
 .create-container {
-    width:100%;
-    margin:0 auto;
     background:#222831;
-    border:1px solid #fff;
-    border-radius:10px;
-    padding:10px;
+    border-radius:0px;
     color:#fff;
     box-sizing:border-box;
     position:relative;
 }
 
+.search-container,
+.create-container {
+    margin:0;
+    background:#222831;
+    border-radius:0px;
+    padding:15px 20px;
+    color:#fff;
+    box-sizing:border-box;
+    position:relative;
+}
 /* SCROLL AREA DIPERBAIKI */
 
 .post-scroll {
-    height: calc(100vh - 195px);
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 0 20px;
+    margin-top: -15px;
     overflow-y:auto;
-    padding-right:2px;
     box-sizing:border-box;
 }
 
@@ -149,8 +166,8 @@ main {
 .create-container input {
     width:100%;
     border:1px solid #ffffff;
-    border-radius:20px;
-    padding:10px;
+    border-radius:30px;
+    padding:10px 10px 10px 52px;
     background:#fff;
     color:#111;
     outline:none;
@@ -160,9 +177,10 @@ main {
 .post-area {
     display:flex;
     flex-direction:column;
-    gap:14px;
-    margin:0 2px;
+    gap:15px;
+    margin:0px;
     padding:0;
+    padding-top: 15px;
 }
 
 .post {
@@ -171,7 +189,13 @@ main {
     border-radius:10px;
     box-shadow:0 1px 6px rgba(0,0,0,0.08);
     overflow:hidden;
+    height:170px;
     box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    margin:0 auto;
+    width:100%;
+    max-width: 1200px;
 }
 
 .post-header {
@@ -204,6 +228,7 @@ main {
     color:#333;
     line-height:1.4;
     font-size:14px;
+    flex:1;
 }
 
 .post-bottom {
@@ -215,6 +240,7 @@ main {
     padding:10px 15px;
     flex-wrap:wrap;
     gap:8px;
+    margin-top:auto;
 }
 
 .post-bottom .actions span,
@@ -233,22 +259,33 @@ main {
     cursor:pointer;
     display:inline-flex;
     align-items:center;
-    gap:6px;
+    gap:5px;
 }
 
 .post-bottom .actions iconify-icon,
 .post-bottom .actions i {
-    font-size:24px;
-    width:24px;
-    height:24px;
+    font-size:20px;
+    width:20px;
+    height:20px;
     color:#eeeeee;
 }
 
 .actions span {
-    margin-right:10px;
+    margin-right:0;
     font-size:13px;
 }
 
+.actions button {
+    margin-right:0px;
+}
+
+.comment {
+    width:20px;
+    height:20px;
+}
+.search-container{
+    margin-bottom: 15px;
+}
 .tags {
     display:flex;
     gap:8px;
@@ -264,13 +301,12 @@ main {
 }
 
 .views { 
-    font-size:12px; 
+    font-size:13px; 
     color:#fff; 
 }
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
     .layout { gap:20px; }
     .post-scroll { height: calc(100vh - 230px); }
     main { padding:10px; }
-    .content-wrapper { gap:10px; }
-}
+} */
