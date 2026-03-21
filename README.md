@@ -1,3 +1,8 @@
+## Project Status
+
+🚧 This project is currently under development (progress stage).  
+Some features are not fully implemented yet and will be improved over time.
+
 # Web-In
 
 Web-In is a class discussion website designed to facilitate communication and knowledge sharing among students. Through this platform, users can ask questions, share ideas, and engage in discussions related to school subjects or other relevant topics.
@@ -10,7 +15,7 @@ This website helps students interact without needing face-to-face meetings, maki
 
 1. Clone the repository:
     ```bash
-    https://github.com/var-sama/STS_kelompok_6.git
+    git clone https://github.com/var-sama/STS_kelompok_6.git
     ```
 
 2. Navigate into the project folder:
@@ -23,7 +28,7 @@ This website helps students interact without needing face-to-face meetings, maki
     php -S localhost:5000 -t public
     ```
 
-4. Set up the database:
+4. Set up the database(in progress):
    ~ Open your database tool (phpMyAdmin, MySQL Workbench, or command line).
    ~ Create a new database "pwl-ta-db".
    ~ Import the SQL file provided in the repository ():
@@ -54,12 +59,36 @@ This website helps students interact without needing face-to-face meetings, maki
 ## Architecture
 
 ```Project structure
-sts-pwl/
-  ├── index.html    ~ Main page
-  ├── index.css     ~ Website styling
-  ├── ###.png       ~ Supporting icons/images
-  ├── ###.jpg       ~ Supporting icons/images
-  └── README.md     ~ Project documentation
+STS_KELOMPOK_6/
+├── app/
+│   ├── controllers/
+│   │   ├── AuthController.php          # Handle authentication (login/register)
+│   │   ├── LandingController.php       # Handle landing page logic
+│   │   └── ProblemDetailController.php # Handle detail discussion/problem page
+│   │
+│   ├── core/
+│   │   └── Router.php                  # Simple routing system
+│   │
+│   └── views/
+│       ├── auth/                       # Authentication views (login/register)
+│           └── login.php               # Login page
+│           └── register.php            # Register page
+│       ├── components/
+│       │   └── navbar.php              # Reusable navbar component
+│       ├── detail.php                  # Problem/discussion detail page
+│       └── landing.php                 # Landing page UI
+│
+├── public/
+│   ├── css/
+│   │   ├── detail.css                  # Styling for detail page
+│   │   ├── landing.css                 # Styling for landing page
+│   │   └── Navbar.css                  # Styling for navbar
+│   │
+│   ├── icons/                          # Icons/assets
+│   └── index.php                       # Entry point (main file)
+│
+├── .gitignore
+└── README.md
 ```
 
 ---
