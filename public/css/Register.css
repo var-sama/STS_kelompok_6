@@ -1,0 +1,130 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Body */
+body {
+    background: #ffffff;
+}
+
+/* Container utama */
+.container {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    padding: 40px;
+}
+
+/* Kiri (Logo) */
+.left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+/* Kanan (Box Form) */
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.login-box {
+    background: #1f2933;
+    padding: 50px;
+    border-radius: 20px;
+    width: 320px;
+    color: white;
+}
+
+/* Judul */
+.login-box h1 {
+    margin-bottom: 20px;
+    line-height: 1.3;
+    text-align: center;
+    font-size: 40px;
+}
+
+.login-box span {
+    color: #00ADB5;
+}
+
+/* Label */
+.login-box label {
+    font-size: 13px;
+}
+
+/* Input & Select */
+.login-box input,
+.login-box select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 14px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+/* Dots */
+.dots {
+    display: flex;
+    justify-content: center;
+    margin: 1px 0;
+}
+
+.social-img {
+    width: 190px;     /* kecilin lagi */
+    height: auto;
+    display: block;
+    margin: 10 auto;
+}
+
+/* Button */
+.login-box button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #00ADB5;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.login-box button:hover {
+    background: #04747a;
+}
+
+/* Text kecil */
+.forgot {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .left img {
+        width: 300px;
+    }
+}

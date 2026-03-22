@@ -25,6 +25,7 @@ $router->add("GET", "/analytics", "AnalyticsController", "analyticsView");
 
 
 
+
 $router->run();
 
 ?>
