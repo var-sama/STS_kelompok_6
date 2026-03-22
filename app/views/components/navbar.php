@@ -3,7 +3,7 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <div class="sidebar" id="sidebar">
             <!-- <button id="toggle">☰</button> -->
-            <a href="#">
+            <a href="/" class="active">
                 <iconify-icon icon="lucide:home"></iconify-icon>
                 <span>Homepage</span>
             </a>
@@ -25,14 +25,64 @@
             </a>
         </div>
 
-        <script>
-    const sidebar = document.getElementById("sidebar");
-    const toggle = document.getElementById("toggle");
 
-    // Toggle when clicking the sidebar background (not when clicking links)
-    sidebar.addEventListener("click", (event) => {
-        if (event.target === sidebar || event.target === toggle) {
-            sidebar.classList.toggle("open");
+<script>
+    const sidebar = document.getElementById("sidebar");
+    const links = document.querySelectorAll(".sidebar a");
+
+    // Restore state saat load
+    window.addEventListener("DOMContentLoaded", () => {
+        const state = localStorage.getItem("sidebar");
+
+        if (state === "open") {
+            sidebar.classList.add("open");
         }
+    });
+
+    // Toggle + simpan state
+    sidebar.addEventListener("click", (event) => {
+        if (event.target === sidebar) {
+            sidebar.classList.toggle("open");
+
+            localStorage.setItem(
+                "sidebar",
+                sidebar.classList.contains("open") ? "open" : "closed"
+            );
+        }
+    });
+
+    // Active pas diklik
+    links.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            links.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+        });
+    });
+
+    // Active berdasarkan URL
+    const currentPath = window.location.pathname;
+
+    links.forEach(link => {
+        const href = link.getAttribute("href");
+
+        if (href === currentPath) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+    links.forEach(link => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        links.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = link.getAttribute("href");
+        }, 150);
+    });
     });
 </script>
