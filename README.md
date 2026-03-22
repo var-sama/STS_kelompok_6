@@ -54,7 +54,7 @@ This website helps students interact without needing face-to-face meetings, maki
 
 5. After login, users can access their dashboard or profile page depending on their role.
 
-#### These features are still under development.
+### These features are still under development.
 To access them, append the following paths to your localhost URL in the browser:
    ```bash
     /login            # login page
