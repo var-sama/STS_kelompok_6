@@ -113,9 +113,14 @@ main{
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    font-weight: 600;
 }
 
-.actions span:hover {
+.actions button:hover{
+    color: #00ADB5 !important;
+}
+
+.actions button:hover iconify-icon {
     color: #00ADB5;
 }
 
@@ -175,7 +180,7 @@ main{
 .post-bottom .actions button {
     border: none;
     background: transparent;
-    color: #fff;
+    color: #eeeeee;
     padding: 0 !important;
     margin: 0 !important;
     font-size: 13px;
@@ -183,6 +188,7 @@ main{
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    font-weight: 600;
 }
 
 .post-bottom .actions span,

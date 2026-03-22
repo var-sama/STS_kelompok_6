@@ -64,7 +64,7 @@ main {
     left:15px;
     top:55%;
     transform:translateY(-50%);
-    color:#aaa;
+    color:#222831;
     font-size:32px;
     pointer-events:none;    
 }
@@ -180,7 +180,8 @@ main {
     gap:15px;
     margin:0px;
     padding:0;
-    padding-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 15px;
 }
 
 .post {
@@ -194,8 +195,17 @@ main {
     display:flex;
     flex-direction:column;
     margin:0 auto;
+    gap: auto;
+    justify-content: space-between;
     width:100%;
     max-width: 1200px;
+    transition: 0.2s;
+    /* cursor: pointer; */
+}
+
+.post:hover {
+    transform: scale(1.03);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.2);;
 }
 
 .post-header {
@@ -224,10 +234,11 @@ main {
 }
 
 .post-text {
-    padding:0 15px 12px;
+    padding:0 15px 41px;
     color:#333;
     line-height:1.4;
     font-size:14px;
+    height: max-content;
     flex:1;
 }
 
@@ -240,7 +251,7 @@ main {
     padding:10px 15px;
     flex-wrap:wrap;
     gap:8px;
-    margin-top:auto;
+    margin-top:auto ;
 }
 
 .post-bottom .actions span,
@@ -252,7 +263,8 @@ main {
 .post-bottom .actions button {
     border:none;
     background:transparent;
-    color:#fff;
+    color:#EEEEEE;
+    font-weight: 600;
     padding:0;
     margin:0;
     font-size:13px;
@@ -260,6 +272,23 @@ main {
     display:inline-flex;
     align-items:center;
     gap:5px;
+}
+
+.actions button:hover{
+    color: #00ADB5;
+}
+
+.actions button:hover iconify-icon {
+    color: #00ADB5;
+}
+
+.actions button:hover .icomment {
+    fill: #00ADB5;
+}
+
+.icomment {
+    fill:#EEEEEE;
+    transition:0.2s;
 }
 
 .post-bottom .actions iconify-icon,
