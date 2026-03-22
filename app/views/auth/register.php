@@ -2,50 +2,50 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Web-In Login</title>
-  <link rel="stylesheet" href="/css/Register.css">
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/Login.css">
 </head>
 <body>
 
+<div class="container">
 
-  <a href="#" class="back">&lt; Kembali</a>
-
-  <div class="wrapper">
-
-
-    <div class="logo-card">
-      <h1>W<span>-in</span></h1>
+    <!-- Kiri (Logo) -->
+    <div class="left">
+        <img src="/icons/Register Login.png" class="logo">
     </div>
 
-    <div class="login-card">
-      <h2>Masuk Sebagai<br>Bagian <span>Web-In</span></h2>
+    <!-- Kanan (Form) -->
+    <div class="right">
+        <div class="login-box">
+            <h2>Masuk Sebagai <span>Web-In</span></h2>
 
-      <label>Username</label>
-      <input type="text" id="username">
+            <form>
+                <label>Username</label>
+                <input type="text" required>
 
-      <label>Kelas</label>
-      <select id="kelas">
-        <option>X</option>
-        <option>XI</option>
-        <option>XII</option>
+                <label>Kelas</label>
+                <select>
+                    <option>X</option>
+                    <option>XI</option>
+                    <option>XII</option>
+                </select>
+
+                <label>Password</label>
+                <input type="password" required>
+
+                <div class="dots">
+                    <img src="/icons/Screenshot_2026-03-22_121911-removebg-preview.png" class="social-img">
+                </div>
+
         
 
-      </select>
+                <button type="submit">Masuk</button>
+            </form>
 
-      <label>Password</label>
-      <input type="password" id="password">
-
-      <div class="dots">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-
-      
-
-      <button onclick="login()">Masuk</button>
+        </div>
     </div>
 
-  </div>
+</div>
 
-  <script src="script.js"></script>
 </body>
 </html>

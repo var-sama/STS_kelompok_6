@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - WebIn</title>
+    <title>Login</title>
     <link rel="stylesheet" href="/css/Login.css">
 </head>
 <body>  
-
-
 
 <div class="container">
 
     <!-- Kiri (Logo) -->
     <div class="left">
-        <div class="logo-box">
-            <h1>W-in</h1>
-        </div>
+        <img src="/icons/Register Login.png" class="logo">
     </div>
 
     <!-- Kanan (Form) -->
@@ -30,27 +26,22 @@
 
                 <label>Password</label>
                 <input type="password" name="password" required>
+                
 
                 <div class="dots">
-                    <img src="/public/icons/google.png">
-                    <img src="/public/icons/x.png">
-                    <img src="/public/icons/facebook.png">
-                    <img src="/public/icons/google.png">
-                    <img src="/public/icons/x.png">
+                    <img src="/icons/Screenshot_2026-03-22_121911-removebg-preview.png" class="social-img">
                 </div>
 
                 <button type="submit">Login</button>
+                <button type="button">Daftar</button>
             </form>
 
-            <p class="forgot">Lupa password?</p>
+            <a href="#" class="forgot">Lupa password?</a>
         </div>
     </div>
 
 </div>
 
-</body>
-</html>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

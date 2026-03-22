@@ -1,59 +1,39 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background: #ffffff;
-}
-
-.back {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: #00aaff;
-    text-decoration: none;
-}
-
 /* Container utama */
 .container {
     display: flex;
-    height: 100vh;
+    min-height: 80vh;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 50px;
+    padding: 50px;
 }
 
 /* Kiri */
-.left .logo-box {
-    background: #2c3e75;
-    width: 300px;
-    height: 300px;
-    border-radius: 20px;
+.left {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.logo-box h1 {
-    color: white;
-    font-size: 60px;
+.left img {
+    width: 565px;
+    max-width: 100%;
+    border-radius: 20px;
 }
 
 /* Kanan */
 .login-box {
     background: #1f2933;
-    padding: 30px;
-    border-radius: 15px;
-    width: 320px;
+    padding: 60px;
+    border-radius: 20px;
+    width: 300px;
     color: white;
-    margin: 8px;
 }
 
+/* Judul */
 .login-box h2 {
     margin-bottom: 20px;
+    line-height: 1.0;
 }
 
 .login-box span {
@@ -65,10 +45,11 @@ body {
     font-size: 14px;
 }
 
-.login-box input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0 8px;
+.login-box input,
+.login-box select {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0 12px;
     border-radius: 10px;
     border: none;
 }
@@ -77,28 +58,26 @@ body {
 .dots {
     display: flex;
     justify-content: center;
-    gap: 9px;
-    margin: 8px ;
-    font-size: 50px;
+    margin: 1px 0;
 }
 
-.dots span {
-    width: 35px;
-    height: 35px;
-    background: #ccc;
-    border-radius: 50%;
+.social-img {
+    width: 190px;     /* kecilin lagi */
+    height: auto;
+    display: block;
+    margin: 10 auto;
 }
 
 /* Button */
 button {
     width: 100%;
-    padding: 16px;
+    padding: 14px;
     border: none;
     background: #00cfff;
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    margin: 8px 0 8px;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -106,8 +85,14 @@ button:hover {
 }
 
 .forgot {
-    text-align: right;
+    color: #00cfff;
+    text-decoration: underline;
     font-size: 12px;
+    display: block;
+    text-align: right;
     margin-top: 10px;
 }
+
+
+
 
