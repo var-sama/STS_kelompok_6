@@ -64,8 +64,8 @@ STS_KELOMPOK_6/
 │   ├── controllers/
 │   │   ├── AuthController.php          # Handle authentication (login/register)
 │   │   ├── LandingController.php       # Handle landing page logic
-│   │   ├── AnalyticController.php      # Handle landing page logic
-│   │   ├── ProblemCreateController.php # Handle landing page logic
+│   │   ├── AnalyticController.php      # Handle analytics page logic
+│   │   ├── ProblemCreateController.php # Handle problem create page logic
 │   │   └── ProblemDetailController.php # Handle detail discussion/problem page
 │   │
 │   ├── core/
@@ -77,8 +77,8 @@ STS_KELOMPOK_6/
 │           └── register.php            # Register page
 │       ├── components/
 │       │   └── navbar.php              # Reusable navbar component
-│       ├── detail.php                  # Problem/discussion detail page
-│       ├── detail.php                  # Problem/discussion detail page
+│       ├── analytics.php               # Admin analytics page
+│       ├── Problemcreate.php           # Problem create page
 │       ├── detail.php                  # Problem/discussion detail page
 │       └── landing.php                 # Landing page UI
 │
