@@ -54,6 +54,17 @@ This website helps students interact without needing face-to-face meetings, maki
 
 5. After login, users can access their dashboard or profile page depending on their role.
 
+#### These features are still under development.
+To access them, append the following paths to your localhost URL in the browser:
+   ```bash
+    /login            # login page
+    /register         # register page
+    /Problemcreate    # problem create page
+    /analytics        # admin analytics page
+    /problem-detail   # problem detail page
+    /                 # landing page
+   ```
+
 ---
 
 ## Architecture
@@ -86,13 +97,16 @@ STS_KELOMPOK_6/
 │   ├── css/
 │   │   ├── detail.css                  # Styling for detail page
 │   │   ├── landing.css                 # Styling for landing page
+│   │   ├── Login.css                   # Styling for login page
+│   │   ├── Problem.css                 # Styling for problem create page
+│   │   ├── Register.css                # Styling for lregister page
 │   │   └── Navbar.css                  # Styling for navbar
 │   │
 │   ├── icons/                          # Icons/assets
 │   └── index.php                       # Entry point (main file)
 │
 ├── .gitignore
-└── README.md
+└── README.md                           # Readme file
 ```
 
 ---
