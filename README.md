@@ -64,7 +64,7 @@ STS_KELOMPOK_6/
 │   ├── controllers/
 │   │   ├── AuthController.php          # Handle authentication (login/register)
 │   │   ├── LandingController.php       # Handle landing page logic
-│   │   ├── AnalyticsController.php      # Handle analytics page logic
+│   │   ├── AnalyticsController.php     # Handle analytics page logic
 │   │   ├── ProblemCreateController.php # Handle problem create page logic
 │   │   └── ProblemDetailController.php # Handle detail discussion/problem page
 │   │
