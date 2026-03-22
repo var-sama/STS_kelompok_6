@@ -3,12 +3,12 @@ body{
     font-family:sans-serif;
 
 }
-
+ 
 .layout{
     display:flex;
     min-height:100vh;
 }
-
+ 
 .sidebar{
     box-sizing: border-box;
     width:70px;
@@ -23,13 +23,13 @@ body{
     flex-shrink:0;
     position: sticky;
 }
-
+ 
 main{
     flex:1;
     padding:0;
     color:#fff;
 }
-
+ 
 img,
 iconify-icon{
     width:38px;
@@ -51,23 +51,23 @@ iconify-icon{
     width:max-content;
     border-radius: 12px;
 }
-
+ 
 .sidebar.open a{
     justify-content:flex-start;
     width:100%;
     padding-left:17px;
     border-radius: 0;
 }
-
+ 
 .sidebar a:hover{
     color:#00ADB5;
 }
-
+ 
 .sidebar a.active{
     color:#00ADB5;
     transform: scale(1.2);
 }
-
+ 
 .klik{
     transform: scale(1.2);
     color: #00ADB5;
@@ -75,7 +75,7 @@ iconify-icon{
 .klik img{
     transform: scale(1.2);
 }
-
+ 
 .sidebar.open{
     width:220px;
     justify-content:flex-start;
@@ -89,7 +89,7 @@ iconify-icon{
     white-space:nowrap;
     transition: opacity 0.15s ease, max-width 0.15s ease;
     font-weight: 700;
-
+ 
 }
 .sidebar.open span{
     opacity:1;

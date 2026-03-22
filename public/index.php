@@ -18,6 +18,12 @@ $router->add("GET", "/login", "AuthController", "loginView");
 $router->add("GET", "/register", "AuthController", "registerView");
 
 $router->add("GET", "/problem-detail", "ProblemDetailController", "detailView");
+// Register
+$router->add("GET", "/Problemcreate", "ProblemController", "ProblemcreateView");
+// Analytics
+$router->add("GET", "/analytics", "AnalyticsController", "analyticsView");
+
+
 
 $router->run();
 
