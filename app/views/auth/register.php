@@ -17,7 +17,7 @@
     <!-- Kanan (Form) -->
     <div class="right">
         <div class="login-box">
-            <h2>Masuk Sebagai <span>Web-In</span></h2>
+            <h1>Daftar Menjadi Bagian <span>Web-In</span></h1>
 
             <form>
                 <label>Username</label>

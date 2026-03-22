@@ -51,13 +51,15 @@ body {
 }
 
 /* Judul */
-.login-box h2 {
+.login-box h1 {
     margin-bottom: 20px;
     line-height: 1.3;
+    text-align: center;
+    font-size: 40px;
 }
 
 .login-box span {
-    color: #00cfff;
+    color: #00ADB5;
 }
 
 /* Label */
@@ -95,7 +97,7 @@ body {
     width: 100%;
     padding: 14px;
     border: none;
-    background: #00cfff;
+    background: #00ADB5;
     color: white;
     border-radius: 10px;
     cursor: pointer;
@@ -104,7 +106,7 @@ body {
 }
 
 .login-box button:hover {
-    background: #00aacc;
+    background: #04747a;
 }
 
 /* Text kecil */

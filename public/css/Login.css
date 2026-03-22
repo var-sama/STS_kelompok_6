@@ -23,7 +23,7 @@
 
 /* Kanan */
 .login-box {
-    background: #1f2933;
+    background: #222831;
     padding: 60px;
     border-radius: 20px;
     width: 300px;
@@ -31,13 +31,15 @@
 }
 
 /* Judul */
-.login-box h2 {
+.login-box h1 {
     margin-bottom: 20px;
     line-height: 1.0;
+    font-size: 40px;
+    text-align: center;
 }
 
 .login-box span {
-    color: #00cfff;
+    color: #00ADB5;
 }
 
 /* Input */
@@ -73,7 +75,7 @@ button {
     width: 100%;
     padding: 14px;
     border: none;
-    background: #00cfff;
+    background: #00ADB5;
     color: white;
     border-radius: 10px;
     cursor: pointer;
@@ -81,11 +83,11 @@ button {
 }
 
 button:hover {
-    background: #00aacc;
+    background: #00ADB5;
 }
 
 .forgot {
-    color: #00cfff;
+    color: #00ADB5;
     text-decoration: underline;
     font-size: 12px;
     display: block;
