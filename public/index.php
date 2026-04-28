@@ -21,6 +21,8 @@ $router->add("GET", "/register", "AuthController", "registerView");
 $router->add("GET", "/Problemcreate", "ProblemController", "ProblemcreateView");
 // Analytics
 $router->add("GET", "/analytics", "AnalyticsController", "analyticsView");
+// Analytics
+$router->add("GET", "/tags", "ProblemController", "TagsView");
 
 
 

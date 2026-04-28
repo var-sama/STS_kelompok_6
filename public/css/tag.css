@@ -1,0 +1,61 @@
+/* Ensure the layout doesn't force unnecessary height */
+.prob {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px; /* Reduced top padding */
+    background-color: #ffffff;
+    gap: 20px; /* Reduced space between sections */
+}
+
+.category-title {
+    font-size: 26px; /* Slightly smaller to save space */
+    font-weight: bold;
+    color: #000 !important;
+    margin-bottom: 10px;
+}
+
+.category-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Tighten space between Label and Grid */
+}
+
+.group-header {
+    font-size: 14px; /* Matches the smaller label look */
+    font-weight: 700;
+    color: #000 !important;
+}
+
+/* --- COMPACT GRID --- */
+.tag-grid {
+    display: grid;
+    /* Use 'auto-fill' so they stretch to the side but stay uniform */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+    gap: 12px; /* Reduced gap between buttons */
+    width: 100%;
+}
+
+.tag-pill {
+    background-color: #00a8a8 !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 0; /* Thinner buttons to prevent overflow down */
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.tag-pill:hover {
+    background-color: #008b8b !important;
+}
