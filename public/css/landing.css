@@ -61,8 +61,8 @@ main {
 
 .search-container iconify-icon {
     position:absolute;
-    left:15px;
-    top:55%;
+    left:30px;
+    top:45%;
     transform:translateY(-50%);
     color:#222831;
     font-size:32px;
