@@ -11,7 +11,7 @@
                 <iconify-icon icon="mingcute:tag-line"></iconify-icon>
                 <span>Tag</span>
             </a>
-            <a href="#">
+            <a href="/teams">
                 <iconify-icon icon="ri:team-fill"></iconify-icon>
                 <span>Team</span>
             </a>
