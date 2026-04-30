@@ -13,6 +13,15 @@ class LandingController
         require_once '../app/views/teams.php';
     }
 
+    public function teamsDetailView()//ganti nama ini kalo mau anok function lain, nama sesuaiin sama nama function yg mo dibuat, btw tulisan ni hapus ye
+    {
+        require_once '../app/views/teams detail.php';
+    }
+    public function teamsCreateView()//ganti nama ini kalo mau anok function lain, nama sesuaiin sama nama function yg mo dibuat, btw tulisan ni hapus ye
+    {
+        require_once '../app/views/create team.php';
+    }
+
 }
 
 ?>
