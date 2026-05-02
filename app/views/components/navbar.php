@@ -13,7 +13,7 @@
             </a>
             <a href="/teams">
                 <iconify-icon icon="ri:team-fill"></iconify-icon>
-                <span>Team</span>
+                <span>Teams</span>
             </a>
             <a href="#">
                 <iconify-icon icon="material-symbols:bookmark"></iconify-icon>

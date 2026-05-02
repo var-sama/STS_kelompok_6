@@ -17,7 +17,7 @@
         body {
             display: flex;
             height: 100vh;
-            background-color: #E6E8F4;
+            background-color: #f6f7fb;
             color: #333;
         }
 
@@ -93,7 +93,7 @@
     
         .main-content {
             flex-grow: 1;
-            padding: 20px 40px;
+            padding: 24px;
             overflow-y: auto;
         }
 
@@ -354,7 +354,7 @@
                                 <td>' . $user['id'] . '</td>
                                 <td>' . $user['nama'] . '</td>
                                 <td>' . $user['kelas'] . '</td>
-                                <td><i>' . $user['tanggal'] . '</i></td>
+                                <td><i style="color: #BABCC1; font-size: 12px;">' . $user['tanggal'] . '</i></td>
                                 <td><i class="fa-solid fa-thumbtack action-icon"></i></td>
                             </tr>';
                         }

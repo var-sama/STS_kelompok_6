@@ -2,14 +2,14 @@
 .prob {
     display: flex;
     min-height: 100vh;
-    background-color: #f0f2f5; /* Warna background luar agar card terlihat kontras */
+    background-color: #f6f7fb; /* Warna background luar agar card terlihat kontras */
 }
 
 main {
     flex: 1;
     display: flex;
     justify-content: flex-start; /* Posisi card di atas */
-    padding: 40px;
+    padding: 24px;
 }
 
 /* Container Card */

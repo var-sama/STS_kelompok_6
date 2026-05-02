@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - WebIn</title>
+    <style>
+        body { background-color: #f6f7fb; margin: 0; padding: 24px; font-family: sans-serif; }
+    </style>
 </head>
 <body>
     <h1>Ini adalah halaman register</h1>
