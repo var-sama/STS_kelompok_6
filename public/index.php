@@ -9,13 +9,15 @@ $router = new Router();
 
 // Landing Page
 $router->add("GET", "/", "LandingController", "landingView");
-
+$router->add("GET", "/landing", "LandingController", "landingView");
 
 // Login
 $router->add("GET", "/login", "AuthController", "loginView");
+$router->add("POST", "/login", "AuthController", "loginView");
 
 // Register
 $router->add("GET", "/register", "AuthController", "registerView");
+$router->add("POST", "/register", "AuthController", "registerView");
 
 $router->add("GET", "/problem-detail", "ProblemDetailController", "detailView");
 $router->add("GET", "/detail", "ProblemDetailController", "detailView");

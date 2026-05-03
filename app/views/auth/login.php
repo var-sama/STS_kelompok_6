@@ -11,6 +11,16 @@
 <body>
     <h1>Ini adalah halaman login</h1>
 
+    <form action="/login" method="post">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
     <a href="/register">Belum punya akun</a>
 </body>
 </html>
