@@ -71,14 +71,31 @@
                 </div>
                 
                 <div class="flex items-start justify-between w-full mt-2 gap-2">
-                    <h1 class="font-bold text-lg uppercase tracking-tight line-clamp-2 flex-1 cursor-default" 
-                        title="Kei chan imut parah ga ada lawan di dunia melebihi semesta">
-                        Kei chan imut parah ga ada lawan di dunia melebihi semesta
-                    </h1>
-                    <button class="text-gray-500 hover:text-white shrink-0 mt-1">
-                        <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
-                    </button>
-                </div>
+    <h1 class="font-bold text-lg uppercase tracking-tight line-clamp-2 flex-1 cursor-default" 
+        title="Kei chan imut parah ga ada lawan di dunia melebihi semesta">
+        Kei chan imut parah ga ada lawan di dunia melebihi semesta
+    </h1>
+    
+    <div class="relative inline-block text-left">
+        <button id="optionsBtn" class="text-gray-500 hover:text-white shrink-0 mt-1 focus:outline-none transition-colors">
+            <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
+        </button>
+
+        <div id="optionsDropdown" class="hidden absolute right-0 mt-2 w-48 bg-[#2d3142] rounded-lg shadow-xl z-50 border border-gray-700 py-2 transform origin-top-right transition-all">
+            <a href="/view-anggota" class="px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center gap-3 transition-colors">
+                <i class="fa-solid fa-users w-4 text-center"></i> View Anggota
+            </a>
+            
+            <button onclick="bisukanTim()" class="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center gap-3 transition-colors">
+                <i class="fa-solid fa-bell-slash w-4 text-center"></i> Bisukan
+            </button>
+
+            <div class="h-px bg-gray-700 my-1"></div> <button onclick="hapusTim()" class="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-700 hover:text-red-300 flex items-center gap-3 transition-colors">
+                <i class="fa-solid fa-trash w-4 text-center"></i> Hapus Tim
+            </button>
+        </div>
+    </div>
+</div>
             </div>
             
             <hr class="border-gray-800 mt-6">
@@ -155,5 +172,38 @@
         </div>
     </main>
 
+    <script>
+    // Logic untuk Toggle Dropdown Menu
+    const optionsBtn = document.getElementById('optionsBtn');
+    const optionsDropdown = document.getElementById('optionsDropdown');
+
+    // Menampilkan/menyembunyikan dropdown saat tombol diklik
+    optionsBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Mencegah event merambat
+        optionsDropdown.classList.toggle('hidden');
+    });
+
+    // Menutup dropdown secara otomatis jika user mengklik area lain di luar menu
+    window.addEventListener('click', (e) => {
+        if (!optionsBtn.contains(e.target) && !optionsDropdown.contains(e.target)) {
+            optionsDropdown.classList.add('hidden');
+        }
+    });
+
+    // Dummy functions untuk aksi tombol (bisa kamu sesuaikan dengan backend PHP kamu nanti)
+    function bisukanTim() {
+        alert("Notifikasi tim ini telah dibisukan.");
+        optionsDropdown.classList.add('hidden');
+    }
+
+    function hapusTim() {
+        const confirmDelete = confirm("Apakah kamu yakin ingin menghapus tim ini?");
+        if(confirmDelete) {
+            alert("Tim berhasil dihapus!");
+            // window.location.href = '/teams'; // Uncomment ini untuk redirect setelah hapus
+        }
+        optionsDropdown.classList.add('hidden');
+    }
+</script>
 </body>
 </html>
