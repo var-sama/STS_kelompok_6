@@ -514,7 +514,9 @@
             image: teamImage,
             membersCount: members.length + 1, // +1 dengan kamu sebagai pembuat
             isPublic: isPublic,
-            isMuted: false
+            isMuted: false,
+
+            sections: sections
         };
 
         // 7. Simpan ke LocalStorage

@@ -223,7 +223,7 @@
             const strokeStyle = isPinned ? '#ffffff' : '#4C515F';
 
             return `
-                <div class="card-bg rounded-2xl p-6 relative flex flex-col items-center justify-start min-h-[215px] max-w-[440px] w-full hover:shadow-xl hover:shadow-black/50 transition-all group hover:ring-2 hover:scale-[1.03] hover:ring-[#2dd4bf] cursor-pointer" onclick="window.location.href='/teams-detail'">
+                <div class="card-bg rounded-2xl p-6 relative flex flex-col items-center justify-start min-h-[215px] max-w-[440px] w-full hover:shadow-xl hover:shadow-black/50 transition-all group hover:ring-2 hover:scale-[1.03] hover:ring-[#2dd4bf] cursor-pointer" onclick="window.location.href='/teams-detail?id=${team.uiIndex}'">
                     
                     <div class="absolute top-4 right-4">
                         <button class="text-gray-500 hover:text-white focus:outline-none transition-colors" onclick="toggleDropdown(event, ${team.uiIndex})">
