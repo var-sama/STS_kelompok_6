@@ -232,6 +232,9 @@
   .bottom-2 {
     bottom: calc(var(--spacing) * 2);
   }
+  .bottom-4 {
+    bottom: calc(var(--spacing) * 4);
+  }
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
@@ -291,6 +294,9 @@
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
@@ -540,6 +546,9 @@
     --tw-border-style: dashed;
     border-style: dashed;
   }
+  .border-\[\#00ADB5\] {
+    border-color: #00ADB5;
+  }
   .border-\[\#2dd4bf\] {
     border-color: #2dd4bf;
   }
@@ -549,11 +558,17 @@
   .border-gray-200 {
     border-color: var(--color-gray-200);
   }
+  .border-gray-300 {
+    border-color: var(--color-gray-300);
+  }
   .border-gray-700 {
     border-color: var(--color-gray-700);
   }
   .border-gray-800 {
     border-color: var(--color-gray-800);
+  }
+  .border-transparent {
+    border-color: transparent;
   }
   .bg-\[\#00ced1\] {
     background-color: #00ced1;
@@ -827,10 +842,24 @@
     --tw-duration: 200ms;
     transition-duration: 200ms;
   }
+  .group-hover\:bg-\[\#00ADB5\]\/10 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        background-color: color-mix(in oklab, #00ADB5 10%, transparent);
+      }
+    }
+  }
   .group-hover\:bg-\[\#2dd4bf\]\/10 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         background-color: color-mix(in oklab, #2dd4bf 10%, transparent);
+      }
+    }
+  }
+  .group-hover\:text-\[\#00ADB5\] {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: #00ADB5;
       }
     }
   }
@@ -852,6 +881,13 @@
     &:hover {
       @media (hover: hover) {
         scale: 1.03;
+      }
+    }
+  }
+  .hover\:border-\[\#00ADB5\] {
+    &:hover {
+      @media (hover: hover) {
+        border-color: #00ADB5;
       }
     }
   }
@@ -886,6 +922,20 @@
         @supports (color: color-mix(in lab, red, red)) {
           background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
         }
+      }
+    }
+  }
+  .hover\:text-\[\#00ADB5\] {
+    &:hover {
+      @media (hover: hover) {
+        color: #00ADB5;
+      }
+    }
+  }
+  .hover\:text-gray-600 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-gray-600);
       }
     }
   }

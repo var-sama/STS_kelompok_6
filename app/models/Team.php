@@ -50,55 +50,36 @@ class Team
         }
     }
 
-    // 2. Fungsi Get All Teams (Untuk nampilin di halaman Teams, pakai gaya MySQLi juga)
-    public function getAll() {
-        try {
-            $database = new Database();
-            $connection = $database->getConnection();
-
-            $query = "SELECT * FROM {$this->table} ORDER BY id DESC";
-            $result = $connection->query($query);
-
-            $teams = [];
-            if ($result && $result->num_rows > 0) {
-                // Ambil semua data baris per baris
-                while ($row = $result->fetch_assoc()) {
-                    $teams[] = $row;
-                }
-            }
-            
-            return $teams;
-
-        } catch (Exception $e) {
-            return [];
-        }
+private function getConnection() {
+        $database = new Database();
+        return $database->getConnection();
     }
-     public function getStudents()
+
+    public function getAllTeams()
     {
-        $students = [];
+        $teams = [];
+        $connection = $this->getConnection(); // AMBIL KONEKSI DULU
         $query = "SELECT * FROM {$this->table}";
-        $stmt = $this->connection->prepare($query);
+        $stmt = $connection->prepare($query);
         $stmt->execute();
 
         $result = $stmt->get_result();
-        while ($student = $result->fetch_assoc()) {
-            $students[] = $student;
+        while ($row = $result->fetch_assoc()) {
+            $teams[] = $row;
         }
-        return $students;
+        return $teams;
     }
 
-    // fungsi menampilkan data siswa berdasarkan id
-    public function getStudent(int $id)
+    public function getTeamById(int $id)
     {
+        $connection = $this->getConnection(); // AMBIL KONEKSI DULU
         $query = "SELECT * FROM {$this->table} WHERE id = ?";
-        $stmt = $this->connection->prepare($query);
+        $stmt = $connection->prepare($query);
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
         $result = $stmt->get_result();
-        $student = $result->fetch_assoc();
-        return $student;
+        return $result->fetch_assoc();
     }
-
 }
 ?>
