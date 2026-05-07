@@ -6,7 +6,7 @@ require_once '../app/core/database.php';
 use App\Core\Database;
 use Exception;
 
-class Team
+class Team extends Database
 {
     protected $table = 'grup';
 
@@ -50,16 +50,16 @@ class Team
         }
     }
 
-private function getConnection() {
-        $database = new Database();
-        return $database->getConnection();
-    }
+// private function getConnection() {
+//         $database = new Database();
+//         return $database->getConnection();
+//     }
 
     public function getAllTeams()
     {
         $teams = [];
         $connection = $this->getConnection(); // AMBIL KONEKSI DULU
-        $query = "SELECT * FROM {$this->table}";
+        $query = "SELECT * FROM {$this->table} ORDER BY id DESC";
         $stmt = $connection->prepare($query);
         $stmt->execute();
 
@@ -68,6 +68,8 @@ private function getConnection() {
             $teams[] = $row;
         }
         return $teams;
+
+        
     }
 
     public function getTeamById(int $id)
@@ -81,5 +83,8 @@ private function getConnection() {
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
+    
+    
+    
 }
 ?>

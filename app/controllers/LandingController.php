@@ -9,13 +9,39 @@ class LandingController
 {
     
     public function teamsView() {
-        $teamModel = new \App\Models\Team();
+        // Mencegah cache browser agar data selalu terbaru
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+
+        $teamModel = new Team();
         $allTeams = $teamModel->getAllTeams();
+
+        foreach ($allTeams as &$team) {
+        $path = '/uploads/';
+        // Cek jika ada gambar dan filenya ada di folder public/uploads
+            if (!empty($team['image']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $path . $team['image'])) {
+                $team['profile_img'] = $path . $team['image'] . '?t=' . time();
+            } else {
+                // Fallback ke UI Avatars dengan timestamp untuk hindari cache
+                $team['profile_img'] = 'https://ui-avatars.com/api/?name=' . urlencode($team['name']) . '&background=00ADB5&color=fff&t=' . time();
+            }
+            }
         
         // Kita simpan data ke dalam variabel $data agar bisa dibaca di file teams.php
         $data = ['teams' => $allTeams];
+        extract($data);
         
         require_once '../app/views/teams.php';
+    }
+
+    public function landingView()
+    {
+        require_once '../app/views/landing.php';
+    }
+
+    public function detailView(){
+        require_once '../app/views/detail.php';
     }
 
     public function teamsDetailView()//ganti nama ini kalo mau anok function lain, nama sesuaiin sama nama function yg mo dibuat, btw tulisan ni hapus ye
@@ -48,6 +74,10 @@ class LandingController
 
             // 3. Baru kirim ke model (Sekarang $imageName tidak akan merah lagi)
             if ($teamModel->insertSimple($data, $imageName)) {
+                // Mencegah cache browser setelah redirect
+                header("Cache-Control: no-cache, no-store, must-revalidate");
+                header("Pragma: no-cache");
+                header("Expires: 0");
                 header('Location: /teams?status=success');
                 exit;
             } else {

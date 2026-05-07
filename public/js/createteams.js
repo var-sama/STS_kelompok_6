@@ -57,4 +57,14 @@ function selectPrivacy(el) {
 document.addEventListener('DOMContentLoaded', () => {
     const sidebarMenu = document.getElementById('sidebar-menu');
     sidebarMenu.innerHTML = '<li class="pl-8 text-sm text-gray-500 h-14 flex items-center italic">Section akan muncul di sini</li>';
+
+    // 5. Mencegah Double Submit
+    const form = document.getElementById('team-form');
+    form.addEventListener('submit', function(e) {
+        const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Menyimpan...';
+        }
+    });
 }); 

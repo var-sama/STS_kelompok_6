@@ -43,7 +43,7 @@
         </nav>
     </aside>
 
-    <form id="team-form" action="/teams-store" method="POST" enctype="multipart/form-data" class="flex-1 flex flex-col overflow-auto">
+    <form id="team-form" action="/teams-store" method="POST" enctype="multipart/form-data" autocomplete="off" class="flex-1 flex flex-col overflow-auto">
     <main class="flex-1 flex flex-col overflow-hidden">
         <header class="h-16 bg-white border-b flex items-center px-8 shrink-0">
             <h2 class="text-gray-400 font-medium text-sm tracking-widest uppercase">Buat Team Baru</h2>
