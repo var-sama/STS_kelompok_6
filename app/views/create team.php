@@ -43,7 +43,7 @@
         </nav>
     </aside>
 
-    <form id="team-form" action="/teams" method="POST" enctype="multipart/form-data" class="flex-1 flex flex-col overflow-auto">
+    <form id="team-form" action="/teams-store" method="POST" enctype="multipart/form-data" class="flex-1 flex flex-col overflow-auto">
     <main class="flex-1 flex flex-col overflow-hidden">
         <header class="h-16 bg-white border-b flex items-center px-8 shrink-0">
             <h2 class="text-gray-400 font-medium text-sm tracking-widest uppercase">Buat Team Baru</h2>
@@ -56,13 +56,13 @@
                 
                 <div class="field-group">
                     <label for="team-name-input">Nama Tim</label>
-                    <input type="text" id="team-name-input" placeholder="Contoh: Tim Robotika XI TKJ 2" maxlength="100" 
+                    <input type="text" name="team_name" id="team-name-input" placeholder="Contoh: Tim Robotika XI TKJ 2" maxlength="100" 
                            class="w-full bg-[#f7f7f7] border border-[#ddd] rounded-lg px-4 py-3 text-[16px] font-semibold text-[#222831] focus:outline-none focus:border-[#00ADB5] focus:bg-[#f0fdfd] transition-all" />
                 </div>
 
                 <div class="field-group">
                     <label>Deskripsi Tim <span class="optional">(opsional)</span></label>
-                    <textarea placeholder="Ceritakan sedikit tentang tim ini — tujuan, fokus, atau kegiatan yang dilakukan..." 
+                    <textarea name="team_description" placeholder="Ceritakan sedikit tentang tim ini — tujuan, fokus, atau kegiatan yang dilakukan..." 
                               class="w-full bg-[#f7f7f7] border border-[#ddd] rounded-lg px-4 py-3 text-[14px] text-[#222831] focus:outline-none focus:border-[#00ADB5] focus:bg-[#f0fdfd] transition-all min-h-[100px] resize-none"></textarea>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     <div class="card-title">Foto Tim</div>
                     <div class="card-desc">Foto tim membantu anggota mengenali tim dengan mudah. Gunakan gambar representatif, min. 200×200px.</div>
                     
-                    <input type="file" id="team-photo-input" accept="image/png, image/jpeg" class="hidden" onchange="handlePhotoUpload(this)">
+                    <input type="file" name="team_logo" id="team-photo-input" accept="image/png, image/jpeg" class="hidden" onchange="handlePhotoUpload(this)">
                     
                     <div class="photo-upload flex-1" onclick="document.getElementById('team-photo-input').click()">
                         <div class="photo-icon">
@@ -150,8 +150,8 @@
             </div>
 
             <div class="action-row pb-4">
-                <button class="btn-cancel" onclick="window.location.href='/teams'">Batal</button>
-                <button class="btn-submit">Buat Tim</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='/teams'">Batal</button>
+                <button type="submit" class="btn-submit">Buat Tim</button>
             </div>
         </div>
     </main>

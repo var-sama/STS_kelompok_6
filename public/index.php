@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 require_once '../app/core/Router.php';
 
 use App\Core\Router;
@@ -28,6 +31,8 @@ $router->add("GET", "/analytics", "AnalyticsController", "analyticsView");
 $router->add("GET", "/teams", "LandingController", "teamsView");
 $router->add("GET", "/teams-detail", "LandingController", "teamsDetailView");
 $router->add("GET", "/teams-create", "LandingController", "teamsCreateView");
+$router->add("POST", "/teams-store", "LandingController", "storeTeam");
+
 
 
 
