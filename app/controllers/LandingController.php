@@ -44,8 +44,43 @@ class LandingController
         require_once '../app/views/detail.php';
     }
 
-    public function teamsDetailView()//ganti nama ini kalo mau anok function lain, nama sesuaiin sama nama function yg mo dibuat, btw tulisan ni hapus ye
+    public function teamsDetailView()
     {
+        if (!isset($_GET['id']) || empty($_GET['id'])) {
+            header('Location: /teams');
+            exit;
+        }
+
+        $id = intval($_GET['id']); 
+        $teamModel = new Team();
+
+        // 1. Ambil data Tim
+        $team = $teamModel->getTeamById($id);
+
+        if (!$team) {
+            header('Location: /teams');
+            exit;
+        }
+
+        // --- TAMBAHAN KODE DI SINI ---
+        // 2. Ambil data Sections khusus untuk tim ini
+        $sections = $teamModel->getSectionsByTeamId($id);
+        // ----------------------------
+
+        $path = '/uploads/';
+        if (!empty($team['image']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $path . $team['image'])) {
+            $team['profile_img'] = $path . $team['image'] . '?t=' . time();
+        } else {
+            $team['profile_img'] = 'https://ui-avatars.com/api/?name=' . urlencode($team['name']) . '&background=00ADB5&color=fff&t=' . time();
+        }
+        
+        // 3. Masukkan $sections ke dalam array $data agar bisa dibaca di View
+        $data = [
+            'team' => $team,
+            'sections' => $sections // Pastikan ini dikirim ke View
+        ]; 
+        extract($data);
+        
         require_once '../app/views/teams detail.php';
     }
     public function teamsCreateView()//ganti nama ini kalo mau anok function lain, nama sesuaiin sama nama function yg mo dibuat, btw tulisan ni hapus ye
@@ -55,34 +90,44 @@ class LandingController
 
  // Di dalam LandingController.php
     public function storeTeam() {
-        // die("<h1>ALHAMDULILLAH! BERHASIL MASUK KE STORE TEAM!</h1>");
-        
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
-            $teamModel = new \App\Models\Team();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $teamModel = new Team();
+        $imageName = $this->handleUpload(); 
 
-            // 1. Definisikan dulu variabelnya (Panggil fungsi upload)
-            // Kalau fungsi handleUpload ada di class yang sama, pakai $this->
-            $imageName = $this->handleUpload(); 
+        $data = [
+            'name'        => $_POST['team_name'] ?? '',
+            'description' => $_POST['team_description'] ?? '',
+            'privacy'     => $_POST['privacy'] ?? 'public'
+        ];
 
-            // 2. Siapkan data dari form
-            $data = [
-                'name'        => $_POST['team_name'] ?? '',
-                'description' => $_POST['team_description'] ?? '',
-                'privacy'     => $_POST['privacy'] ?? 'public'
-            ];
+        // 1. Simpan Tim dan dapatkan ID-nya
+        $teamId = $teamModel->insertSimple($data, $imageName);
 
-            // 3. Baru kirim ke model (Sekarang $imageName tidak akan merah lagi)
-            if ($teamModel->insertSimple($data, $imageName)) {
-                // Mencegah cache browser setelah redirect
-                header("Cache-Control: no-cache, no-store, must-revalidate");
-                header("Pragma: no-cache");
-                header("Expires: 0");
-                header('Location: /teams?status=success');
-                exit;
-            } else {
-                echo "Gagal simpan.";
+        if ($teamId) {
+            // 2. Ambil data section dari POST (hasil array dari JS tadi)
+            if (isset($_POST['sections']) && is_array($_POST['sections'])) {
+                $teamModel->insertSections($teamId, $_POST['sections']);
             }
+
+            header("Location: /teams?status=success");
+            exit;
+        } else {
+            echo "Gagal simpan tim.";
+        }
+    }
+    }
+    public function delete($id)
+    {
+        $id = intval($id); // Pastikan integer untuk keamanan
+        $teamModel = new Team();
+        $success = $teamModel->delete($id);
+
+        if ($success) {
+            // Redirect balik ke daftar tim dengan status sukses
+            header('Location: /teams?delete=success');
+            exit;
+        } else {
+            echo 'Gagal menghapus tim atau data tidak ditemukan.';
         }
     }
     private function handleUpload() {

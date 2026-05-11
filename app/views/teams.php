@@ -59,8 +59,8 @@
 
                                         <div class="h-px bg-gray-700 my-1"></div> 
                                         
-                                        <form action="/teams/delete" method="POST" class="m-0 p-0" onsubmit="return confirmDelete(event)">
-                                            <input type="hidden" name="id" value="<?= $team['id'] ?>">
+                                        <form onclick="event.stopPropagation()" onsubmit="return confirm('Ente yakin mau hapus tim ini?')" action="/teams/<?= $team['id']?>" method="POST" class="m-0 p-0">
+                                            <input type="hidden" name="_method" value="delete">
                                             <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-700 hover:text-red-300 flex items-center gap-3 transition-colors">
                                                 <i class="fa-solid fa-trash w-4 text-center"></i> Hapus Tim
                                             </button>

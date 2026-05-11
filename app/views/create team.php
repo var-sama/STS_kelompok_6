@@ -126,7 +126,7 @@
                 <div class="add-row">
                     <input type="text" id="sec-input" placeholder="Nama section baru..." maxlength="30" onkeypress="handleSectionInputKey(event)" 
                            class="flex-1 bg-[#f7f7f7] border border-[#ddd] rounded-lg px-4 py-2 text-[15px] text-[#222831] focus:outline-none focus:border-[#00ADB5] transition-all" />
-                    <button class="btn-add" onclick="addSection()">+ Tambah Section</button>
+                    <button type="button" class="btn-add" onclick="addSection()">+ Tambah Section</button>
                 </div>
             </div>
 
@@ -139,7 +139,7 @@
                             <div class="member-avatar">GP</div>
                             <span class="item-text">GPU</span>
                         </div>
-                        <button class="btn-remove-item" onclick="this.closest('.list-item').remove()">×</button>
+                        <button type="button" class="btn-remove-item" onclick="this.closest('.list-item').remove()">×</button>
                     </div>
                 </div>
                 <div class="add-row">
