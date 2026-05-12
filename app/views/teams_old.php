@@ -34,7 +34,7 @@
                         <?php foreach ($data['teams'] as $team): ?>
                             <?php 
                                 // Variabel fallback untuk fitur pin (bisa disambung ke database nanti)
-                                $isPinned = false; // Default false
+                                $isPinned = !empty($team['is_pinned']); // Asumsi ada kolom is_pinned
                                 $fillStyle = $isPinned ? '#ffffff' : 'none';
                                 $strokeStyle = $isPinned ? '#ffffff' : '#4C515F';
                             ?>

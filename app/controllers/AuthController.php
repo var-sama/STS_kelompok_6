@@ -40,41 +40,53 @@ class AuthController
         require_once __DIR__ . '/../views/auth/login.php';
     }
 
-    public function registerView()
-    {
-        // 1. Proses data POST terlebih dahulu
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $database = new Database(); // Pastikan koneksi database di class Database sudah benar
-            $connection = $database->getConnection();
-            
-            $nama = htmlspecialchars(trim($_POST['nama']));
-            $kelas = $_POST['kelas'];
-            $jurusan = $_POST['jurusan'];
-            $kelas_full = $kelas . ' ' . $jurusan;
-            $password = $_POST['password'];
-            $confirm = $_POST['confirm'];
-            
-            if($password !== $confirm) {
-                echo "<script>alert('Password tidak cocok'); window.location.href='/register';</script>";
-                exit;
-            }
-            
-            $hashed = password_hash($password, PASSWORD_DEFAULT);
-            $query = "INSERT INTO akun_users (nama, password, kelas) VALUES (?, ?, ?)";
-            $stmt = $connection->prepare($query);
-            $stmt->bind_param('sss', $nama, $hashed, $kelas_full);
-            
-            if($stmt->execute()) {
-                header('Location: /login');
-                exit;
-            } else {
-                echo "<script>alert('Gagal register'); window.location.href='/register';</script>";
-                exit;
-            }
+public function registerView()
+{
+    // 1. Proses data POST terlebih dahulu
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $database = new Database(); 
+        $connection = $database->getConnection();
+        
+        $nama = htmlspecialchars(trim($_POST['nama']));
+        $kelas = $_POST['kelas'];
+        $jurusan = $_POST['jurusan'];
+        $kelas_full = $kelas . ' ' . $jurusan;
+        $password = $_POST['password'];
+        $confirm = $_POST['confirm'];
+        
+        if($password !== $confirm) {
+            echo "<script>alert('Password tidak cocok'); window.location.href='/register';</script>";
+            exit;
         }
         
-        // 2. Jika bukan POST (hanya buka halaman), baru load View-nya
-        require_once __DIR__ . '/../views/auth/register.php';
+        $hashed = password_hash($password, PASSWORD_DEFAULT);
+
+        // --- TAMBAHAN UNTUK TANGGAL ---
+        // Set timezone ke WIB biar waktunya akurat (opsional tapi disarankan)
+        date_default_timezone_set('Asia/Jakarta');
+        
+        // Bikin format tanggal dan waktu sekarang (Tahun-Bulan-Hari Jam:Menit:Detik)
+        $tanggal = date('Y-m-d H:i:s'); 
+        // ------------------------------
+
+        // Tambahkan kolom 'tanggal' di query INSERT dan tambah satu tanda tanya (?)
+        $query = "INSERT INTO akun_users (nama, password, kelas, date) VALUES (?, ?, ?, ?)";
+        $stmt = $connection->prepare($query);
+        
+        // Ubah 'sss' menjadi 'ssss' karena sekarang ada 4 variabel string yang dimasukkan
+        $stmt->bind_param('ssss', $nama, $hashed, $kelas_full, $tanggal);
+        
+        if($stmt->execute()) {
+            header('Location: /login');
+            exit;
+        } else {
+            echo "<script>alert('Gagal register'); window.location.href='/register';</script>";
+            exit;
+        }
     }
+    
+    // 2. Jika bukan POST (hanya buka halaman), baru load View-nya
+    require_once __DIR__ . '/../views/auth/register.php';
+}
 }
 ?>

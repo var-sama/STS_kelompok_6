@@ -91,11 +91,13 @@ function addSection() {
             <div class="section-dot"></div>
             <span class="item-text section-name">${val}</span>
         </div>
-        <button type="button" class="btn-remove-item" onclick="removeSection(this)">×</button>
+        <button type="button" class="btn-remove-item" onclick="removeSection(this)">×</button> 
     `;
     list.appendChild(item);
     input.value = "";
     updateSidebarPreview();
+
+    
 }
 
 function removeSection(btn) {

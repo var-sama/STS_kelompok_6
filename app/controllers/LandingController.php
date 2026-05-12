@@ -17,16 +17,17 @@ class LandingController
         $teamModel = new Team();
         $allTeams = $teamModel->getAllTeams();
 
-        foreach ($allTeams as &$team) {
-        $path = '/uploads/';
-        // Cek jika ada gambar dan filenya ada di folder public/uploads
+        $allTeams = array_map(function($team) {
+            $path = '/uploads/';
+            // Cek jika ada gambar dan filenya ada di folder public/uploads
             if (!empty($team['image']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $path . $team['image'])) {
                 $team['profile_img'] = $path . $team['image'] . '?t=' . time();
             } else {
                 // Fallback ke UI Avatars dengan timestamp untuk hindari cache
                 $team['profile_img'] = 'https://ui-avatars.com/api/?name=' . urlencode($team['name']) . '&background=00ADB5&color=fff&t=' . time();
             }
-            }
+            return $team;
+        }, $allTeams);
         
         // Kita simpan data ke dalam variabel $data agar bisa dibaca di file teams.php
         $data = ['teams' => $allTeams];
