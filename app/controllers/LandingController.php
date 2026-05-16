@@ -2,7 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Team;
-require_once '../app/models/students.php';
+// require_once '../app/models/students.php';
 require_once '../app/models/Team.php';
 
 class LandingController

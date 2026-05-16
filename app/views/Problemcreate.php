@@ -12,21 +12,22 @@
         <?php require_once '../app/views/components/navbar.php'?>
         
         <main>
-            <div class="editor-container">
+            <form action="/Problemcreate" method="POST" class="editor-container">
                 <div class="editor-card">
-                    <input type="text" class="input-title" placeholder="tuliskan judul masalah yang ingin kamu bagikan">
+                    <input type="text" name="title" class="input-title" placeholder="tuliskan judul masalah yang ingin kamu bagikan" required>
                     
-                    <textarea class="input-content" placeholder="tuliskan masalah yang ingin kamu bagikan"></textarea>
+                    <textarea name="content" class="input-content" placeholder="tuliskan masalah yang ingin kamu bagikan" required></textarea>
                     
                     <div class="tag-section">
-                        <button class="btn-tag">+ tag</button>
+                        <button type="button" class="btn-tag">+ tag</button>
                     </div>
 
                     <div class="card-footer">
                         <span class="footer-text">Lomen 67, 6767</span>
+                        <button type="submit" class="btn-submit">Bagikan</button> 
                     </div>
                 </div>
-            </div>
+            </form>
         </main>
     </div>
 </body>

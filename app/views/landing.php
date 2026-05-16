@@ -129,11 +129,11 @@
                         
                     </div>
                 </div>
-                 <div class="create-container">
-                    <span>+</span>
-                    <input type="text" placeholder="Ciptakan masalah baru">
+                <div class="create-container" onclick="window.location.href='/Problemcreate'">
+                    <div class="plus-icon">
+                        <iconify-icon icon="mdi:plus"></iconify-icon>
+                    </div>
                 </div>
-                        
         </main>
     </div>
 </body>

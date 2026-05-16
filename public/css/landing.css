@@ -69,52 +69,25 @@ main {
     pointer-events:none;    
 }
 
-.create-container span {
-    position:absolute;
-    font-size: 40px;
-    left:28px;
-    top:50%;
-    transform:translateY(-50%);
-    color:#00ADB5;
-    border: 3px solid #00ADB5;
-    border-radius: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    pointer-events:none;    
-}
+
 
 .search-container input{
     width:100%;
     box-sizing:border-box;
 }
 
-.create-container input {
-    width:100%;
-    height: 50px;
-    box-sizing:border-box;
-}
+
 
 .post-scroll,
-.post,
-.create-container {
+.post{
     width:100%;
     max-width:100%;
     margin:0;
 }
 
-.create-container {
-    background:#222831;
-    border-radius:0px;
-    color:#fff;
-    box-sizing:border-box;
-    position:relative;
-}
 
-.search-container,
-.create-container {
+
+.search-container{
     margin:0;
     background:#222831;
     border-radius:0px;
@@ -162,8 +135,7 @@ main {
     background: transparent;
 }
 
-.search-container input,
-.create-container input {
+.search-container input {
     width:100%;
     border:1px solid #ffffff;
     border-radius:30px;
@@ -351,3 +323,58 @@ main {
     .post-scroll { height: calc(100vh - 230px); }
     main { padding:10px; }
 } */
+
+/* Tombol Melayang (Square FAB) di Pojok Kanan Bawah */
+.create-container {
+    position: absolute;
+    bottom: 30px; /* Jarak dari bawah layar */
+    right: 30px;  /* Jarak dari kanan layar */
+    width: 65px;  /* Dimensi kotak (persegi) */
+    height: 65px; /* Dimensi kotak (persegi) */
+    background: #222831; /* Warna hitam kebiruan */
+    border-radius: 16px; /* Corner radius di tengah-tengah (tidak terlalu tajam/bulat) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    z-index: 100; /* Memastikan tombol tidak tertimpa post saat di-scroll */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sedikit bayangan agar terlihat melayang */
+    margin: 0; 
+    padding: 0;
+}
+
+/* Efek saat kursor diarahkan (Hover) */
+.create-container:hover {
+    transform: scale(1.1); /* Membesar sedikit */
+    border: 2px solid #00ADB5; /* Outline Cyan */
+    box-shadow: 0 6px 15px rgba(0, 173, 181, 0.25); /* Bayangan cyan saat di-hover */
+}
+
+/* Lingkaran Plus Cyan di dalam kotak */
+/* Lingkaran Plus Cyan di dalam kotak */
+.create-container .plus-icon {
+    color: #00ADB5;
+    border: 3px solid #00ADB5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    box-sizing: border-box;
+    /* padding-bottom dihapus agar centering flexbox bekerja murni */
+}
+
+/* Mengatur ukuran ikon plus agar pas di dalam lingkaran */
+.create-container .plus-icon iconify-icon {
+    font-size: 26px; 
+    width: 26px;  /* Timpa pengaturan width global 24px */
+    height: 26px; /* Timpa pengaturan height global 24px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}

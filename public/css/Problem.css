@@ -1,6 +1,15 @@
+﻿/* Reset Halaman */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
 /* Layout Dasar */
 .prob {
     display: flex;
+    padding: 0;
+    margin: 0;
     min-height: 100vh;
     background-color: #f6f7fb; /* Warna background luar agar card terlihat kontras */
 }
@@ -27,7 +36,7 @@ main {
     flex-direction: column;
 }
 
-/* Styling Input */
+
 .input-title {
     width: 100%;
     padding: 15px 20px;
@@ -36,11 +45,12 @@ main {
     border-bottom: 1px solid #ccc;
     outline: none;
     color: #666;
+    box-sizing: border-box; 
 }
 
 .input-content {
     width: 100%;
-    min-height: 50px;
+    min-height: 150px; /* Boleh dibesarkan sedikit supaya nyaman ngetik panjang */
     padding: 20px;
     font-size: 14px;
     border: none;
@@ -48,6 +58,10 @@ main {
     outline: none;
     resize: none;
     color: #888;
+    
+    /* KUNCI PERBAIKANNYA DI SINI */
+    box-sizing: border-box; 
+    overflow-y: auto;
 }
 
 /* Section Tag */
@@ -76,4 +90,56 @@ main {
     padding: 10px 20px;
     text-align: right;
     font-size: 12px;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-submit {
+    background: #00ADB5;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn-submit:hover {
+    background: #008c92;
+}
+
+/* 1. Tambahkan transisi halus dan radius pojok ke input state normal */
+.input-title,
+.input-content {
+    transition: all 0.3s ease;
+    border-radius: 4px; /* Memberikan sedikit lengkungan agar outline halus */
+}
+
+/* 2. Mengatur tulisan bawaan (placeholder) agar punya transisi */
+.input-title::placeholder,
+.input-content::placeholder {
+    transition: opacity 0.3s ease;
+}
+
+/* 3. Efek saat input diklik (Focus) - Outline Mengelilingi Kotak */
+.input-title:focus,
+.input-content:focus {
+    /* Menghilangkan outline bawaan browser */
+    outline: none; 
+
+    /* Menjaga garis bawah tetap ada, atau bisa diganti solid cyan jika mau */
+    border-bottom: 1px solid #00ADB5; 
+    
+    /* Trik Utama: Menggunakan box-shadow untuk membuat outline cyan sekeliling */
+    /* Parameter: x-offset, y-offset, blur-radius, spread-radius, warna */
+    box-shadow: 0 0 0 2px rgba(0, 173, 181, 0.2), /* Outline solid tipis transparan */
+                0 0 8px rgba(0, 173, 181, 0.3);  /* Glow cyan yang lembut */
+}
+
+/* 4. Efek memudar pada tulisan saat diklik */
+.input-title:focus::placeholder,
+.input-content:focus::placeholder {
+    opacity: 0.3; /* Semakin kecil nilainya (misal 0.1), semakin hilang tulisannya */
 }
