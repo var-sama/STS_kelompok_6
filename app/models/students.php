@@ -10,33 +10,178 @@ class Problem extends Database
     // Pastikan nama tabel kamu di database adalah 'problems'
     protected $table = 'problems'; 
 
-    public function saveProblem($title, $description)
+    // UBAH FUNGSI saveProblem MENJADI SEPERTI INI:
+    public function saveProblem($title, $description, $team_id = null)
+    {
+        try {
+            $connection = $this->getConnection();
+            
+            // Tambahkan team_id ke dalam query insert
+            $query = "INSERT INTO {$this->table} (title, description, team_id, created_at) VALUES (?, ?, ?, NOW())";
+            $stmt = $connection->prepare($query);
+
+            if (!$stmt) return false;
+
+            // 'ssi' berarti String, String, Integer
+            $stmt->bind_param('ssi', $title, $description, $team_id);
+            $success = $stmt->execute();
+            $stmt->close();
+
+            return $success;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    // TAMBAHKAN FUNGSI BARU INI DI BAWAHNYA:
+    public function getProblemsByTeamId($team_id)
+    {
+        $problems = [];
+        $connection = $this->getConnection();
+        
+        // Ambil postingan KHUSUS untuk tim tertentu beserta status bookmarknya
+        $query = "SELECT p.*, IF(b.id IS NOT NULL, 1, 0) AS is_bookmarked 
+                  FROM problems p 
+                  LEFT JOIN bookmarks b ON p.id = b.problem_id 
+                  WHERE p.team_id = ?
+                  ORDER BY p.id DESC";
+                  
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("i", $team_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        while ($row = $result->fetch_assoc()) {
+            $problems[] = $row;
+        }
+        $stmt->close();
+        return $problems;
+    }
+
+    public function getAllProblems()
+    {
+        $problems = [];
+        $connection = $this->getConnection();
+        
+        // Ambil semua data, urutkan dari ID terbesar (terbaru)
+        $query = "SELECT * FROM {$this->table} ORDER BY id DESC";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $problems[] = $row;
+        }
+        return $problems;
+    }
+
+    // Contoh untuk PDO
+// Pastikan ada `use Exception;` di bagian paling atas file model-mu
+
+   public function getProblemById($id) 
     {
         try {
             // 1. Ambil koneksi dari class Database induk
             $connection = $this->getConnection();
-
-            // 2. Siapkan Query (gunakan ? untuk MySQLi)
-            $query = "INSERT INTO {$this->table} (title, description, created_at) VALUES (?, ?, NOW())";
-            $stmt = $connection->prepare($query);
-
-            if (!$stmt) {
-                return false; // Kalau query salah tulis, kembalikan false
-            }
-
-            // 3. Bind parameter ('ss' artinya dua variabel berjenis String)
-            $stmt->bind_param('ss', $title, $description);
             
-            // 4. Eksekusi
-            $success = $stmt->execute();
-
-            // 5. Bersihkan memori
+            // 2. Siapkan query (pakai {$this->table} biar rapi)
+            $query = "SELECT * FROM {$this->table} WHERE id = ?";
+            
+            $stmt = $connection->prepare($query);
+            
+            // Kalau prepare gagal, ambil pesan error dari $connection
+            if (!$stmt) {
+                throw new Exception("Gagal prepare query: " . $connection->error);
+            }
+            
+            // "i" berarti integer (karena ID biasanya angka)
+            $stmt->bind_param("i", $id); 
+            $stmt->execute();
+            
+            // Ambil hasilnya
+            $result = $stmt->get_result();
+            
+            // Ambil 1 baris data sebagai array asosiatif
+            $data = $result->fetch_assoc();
+            
             $stmt->close();
-
-            return $success;
+            
+            return $data;
 
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    // Tambahkan fungsi-fungsi ini di dalam class Problem
+
+    public function toggleBookmark($problem_id)
+    {
+        $connection = $this->getConnection();
+        
+        // 1. Cek apakah postingan ini sudah di-bookmark atau belum
+        $query = "SELECT id FROM bookmarks WHERE problem_id = ?";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("i", $problem_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            // Jika sudah ada, hapus (Unbookmark)
+            $stmt->close();
+            $deleteQuery = "DELETE FROM bookmarks WHERE problem_id = ?";
+            $deleteStmt = $connection->prepare($deleteQuery);
+            $deleteStmt->bind_param("i", $problem_id);
+            $deleteStmt->execute();
+            $deleteStmt->close();
+            return 'removed';
+        } else {
+            // Jika belum ada, masukkan (Bookmark)
+            $stmt->close();
+            $insertQuery = "INSERT INTO bookmarks (problem_id) VALUES (?)";
+            $insertStmt = $connection->prepare($insertQuery);
+            $insertStmt->bind_param("i", $problem_id);
+            $insertStmt->execute();
+            $insertStmt->close();
+            return 'added';
+        }
+    }
+
+    // Fungsi untuk mengambil semua data masalah beserta status bookmark-nya (untuk Landing Page)
+    public function getAllProblemsWithBookmarkStatus()
+    {
+        $problems = [];
+        $connection = $this->getConnection();
+        $query = "SELECT p.*, IF(b.id IS NOT NULL, 1, 0) AS is_bookmarked 
+                FROM problems p 
+                LEFT JOIN bookmarks b ON p.id = b.problem_id 
+                ORDER BY p.id DESC";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $problems[] = $row;
+        }
+        $stmt->close();
+        return $problems;
+    }
+
+    // Fungsi untuk mengambil KHUSUS postingan yang di-bookmark saja
+    public function getBookmarkedProblems()
+    {
+        $problems = [];
+        $connection = $this->getConnection();
+        $query = "SELECT p.*, 1 AS is_bookmarked 
+                FROM problems p 
+                INNER JOIN bookmarks b ON p.id = b.problem_id 
+                ORDER BY b.id DESC";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $problems[] = $row;
+        }
+        $stmt->close();
+        return $problems;
     }
 }

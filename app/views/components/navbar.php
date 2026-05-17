@@ -15,7 +15,7 @@
                 <iconify-icon icon="ri:team-fill"></iconify-icon>
                 <span>Teams</span>
             </a>
-            <a href="#">
+            <a href="/bookmark">
                 <iconify-icon icon="material-symbols:bookmark"></iconify-icon>
                 <span>Bookmark</span>
             </a>

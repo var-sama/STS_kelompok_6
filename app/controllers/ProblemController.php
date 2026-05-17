@@ -17,18 +17,27 @@ class ProblemController
             
             // Sanitasi input
             $title       = htmlspecialchars(trim($_POST['title']));
-            $description = htmlspecialchars(trim($_POST['content'])); // Mengambil dari name="content" di HTML
+            $description = htmlspecialchars(trim($_POST['content']));
+
+            // 1. Tangkap team_id dari URL (contoh: /Problemcreate?team_id=1)
+            $team_id = isset($_GET['team_id']) ? intval($_GET['team_id']) : null;
 
             // Validasi pastikan tidak kosong
             if (!empty($title) && !empty($description)) {
                 
                 $problemModel = new Problem();
-                // Memanggil fungsi saveProblem dengan data yang pas
-                $isSaved = $problemModel->saveProblem($title, $description);
+                
+                // 2. Simpan beserta parameter team_id
+                $isSaved = $problemModel->saveProblem($title, $description, $team_id);
 
                 if ($isSaved) {
-                    // Jika sukses, redirect ke halaman utama
-                    header('Location: /'); 
+                    // 3. Jika problem ini milik suatu tim, kembalikan ke halaman tim itu
+                    if ($team_id) {
+                        header('Location: /teams-detail?id=' . $team_id);
+                    } else {
+                        // Jika tidak ada tim (problem umum/landing page), kembalikan ke home
+                        header('Location: /'); 
+                    }
                     exit;
                 } else {
                     echo "Waduh, gagal menyimpan data ke database.";

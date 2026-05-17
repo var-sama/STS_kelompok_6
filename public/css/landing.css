@@ -206,24 +206,33 @@ main {
 }
 
 .post-text {
-    padding:0 15px 41px;
-    color:#333;
-    line-height:1.4;
-    font-size:14px;
-    height: max-content;
-    flex:1;
+    /* Padding bawah dikurangi biar jarak judul ke div gelap pas */
+    padding: 0 15px 15px; 
+    color: #333;
+    line-height: 1.4;
+    font-size: 16px; /* Boleh dibesarkan sedikit karena ini judul */
+    flex: 1;
+
+    /* Jaga-jaga kalau ada user iseng nulis Judul panjang tanpa spasi */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .post-bottom {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#2d3142;
-    color:#fff;
-    padding:10px 15px;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:auto ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2d3142;
+    color: #fff;
+    padding: 10px 15px;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    
+    /* Pastikan div gelap ini membentang penuh 100% dari kotaknya */
+    width: 100%; 
+    box-sizing: border-box;
 }
 
 .post-bottom .actions span,

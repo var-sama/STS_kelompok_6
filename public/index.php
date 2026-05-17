@@ -22,8 +22,12 @@ $router->add("POST", "/login", "AuthController", "loginView");
 $router->add("GET", "/register", "AuthController", "registerView");
 $router->add("POST", "/register", "AuthController", "registerView");
 
-$router->add("GET", "/problem-detail", "ProblemDetailController", "detailView");
+$router->add("GET", "/problem-detail", "LandingController", "detailView");
 $router->add("GET", "/detail", "ProblemDetailController", "detailView");
+
+// Tambahkan ini di index.php bersama rute lainnya
+$router->add("POST", "/toggle-bookmark", "LandingController", "toggleBookmark");
+$router->add("GET", "/bookmark", "LandingController", "bookmarkView");
 // Register
 $router->add("GET", "/Problemcreate", "ProblemController", "ProblemcreateView");
 $router->add("POST", "/Problemcreate", "ProblemController", "store");

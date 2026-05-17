@@ -12,7 +12,7 @@
         <?php require_once '../app/views/components/navbar.php'?>
         
         <main>
-            <form action="/Problemcreate" method="POST" class="editor-container">
+            <form action="/Problemcreate<?= isset($_GET['team_id']) ? '?team_id=' . $_GET['team_id'] : '' ?>" method="POST" class="editor-container">
                 <div class="editor-card">
                     <input type="text" name="title" class="input-title" placeholder="tuliskan judul masalah yang ingin kamu bagikan" required>
                     

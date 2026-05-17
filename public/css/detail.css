@@ -24,6 +24,7 @@ main{
     justify-content: center;
 }
 
+/* Pastikan detail-card bisa memanjang ke bawah */
 .detail-card {
     width: 100%;
     max-width: 1200px;
@@ -33,6 +34,24 @@ main{
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     border: 1px solid #eee;
     overflow: hidden;
+    
+    /* TAMBAHKAN INI: Memastikan card tingginya mengikuti konten (deskripsi) */
+    height: auto; 
+    min-height: max-content;
+}
+
+/* Pastikan teks panjang tidak luber dan kotak memanjang */
+.post-text {
+    margin: 0 20px 20px;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.5;
+    
+    /* TAMBAHKAN INI: Memaksa kata yang spam / terlalu panjang untuk turun ke bawah */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap; /* Mempertahankan enter/spasi dari user, tapi tetap wrap ke bawah */
 }
 
 .post-header {
@@ -64,13 +83,6 @@ main{
     margin: 0 20px 15px;
     font-size: 24px;
     color: #111;
-}
-
-.post-text {
-    margin: 0 20px 20px;
-    color: #555;
-    font-size: 15px;
-    line-height: 1.5;
 }
 
 .post-header {

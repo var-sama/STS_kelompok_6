@@ -2,8 +2,10 @@
 namespace App\Controllers;
 
 use App\Models\Team;
+use App\Models\Problem;
 // require_once '../app/models/students.php';
 require_once '../app/models/Team.php';
+require_once '../app/models/students.php';
 
 class LandingController
 {
@@ -36,12 +38,33 @@ class LandingController
         require_once '../app/views/teams.php';
     }
 
-    public function landingView()
-    {
-        require_once '../app/views/landing.php';
-    }
+    public function landingView() {
+        $problemModel = new Problem();
+        // Pakai method baru ini agar status bookmark terdeteksi saat halaman dimuat
+        $problems = $problemModel->getAllProblemsWithBookmarkStatus(); 
 
-    public function detailView(){
+        require_once '../app/views/landing.php'; // Sesuaikan dengan path file kamu
+    }
+   public function detailView() {
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+
+        if (!$id) {
+            header('Location: /');
+            exit;
+        }
+
+        $problemModel = new Problem();
+        $problem = $problemModel->getProblemById($id); 
+
+        if (!$problem) {
+            // Kalau datanya false (entah karena ID gak ada atau kena Catch Exception di model)
+            echo "Data tidak ditemukan atau terjadi masalah."; 
+            exit;
+        }
+        
+        $data = ['problem' => $problem];
+        extract($data);
+
         require_once '../app/views/detail.php';
     }
 
@@ -54,8 +77,6 @@ class LandingController
 
         $id = intval($_GET['id']); 
         $teamModel = new Team();
-
-        // 1. Ambil data Tim
         $team = $teamModel->getTeamById($id);
 
         if (!$team) {
@@ -63,10 +84,12 @@ class LandingController
             exit;
         }
 
-        // --- TAMBAHAN KODE DI SINI ---
-        // 2. Ambil data Sections khusus untuk tim ini
         $sections = $teamModel->getSectionsByTeamId($id);
-        // ----------------------------
+
+        // --- TAMBAHAN BARU: Ambil postingan masalah khusus tim ini ---
+        $problemModel = new Problem();
+        $problems = $problemModel->getProblemsByTeamId($id);
+        // -------------------------------------------------------------
 
         $path = '/uploads/';
         if (!empty($team['image']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $path . $team['image'])) {
@@ -75,10 +98,10 @@ class LandingController
             $team['profile_img'] = 'https://ui-avatars.com/api/?name=' . urlencode($team['name']) . '&background=00ADB5&color=fff&t=' . time();
         }
         
-        // 3. Masukkan $sections ke dalam array $data agar bisa dibaca di View
         $data = [
             'team' => $team,
-            'sections' => $sections // Pastikan ini dikirim ke View
+            'sections' => $sections,
+            'problems' => $problems // Pastikan $problems dikirim ke view!
         ]; 
         extract($data);
         
@@ -148,6 +171,28 @@ class LandingController
             }
         }
         return null; // Kalau nggak ada foto, return null agar DB aman
+    }
+
+    public function toggleBookmark() {
+        header('Content-Type: application/json');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['problem_id'])) {
+            $problemId = intval($_POST['problem_id']);
+            $problemModel = new Problem();
+            $status = $problemModel->toggleBookmark($problemId);
+
+            echo json_encode(['status' => $status]);
+            exit;
+        }
+        echo json_encode(['status' => 'error']);
+        exit;
+    }
+
+    public function bookmarkView() {
+        $problemModel = new Problem();
+        $problems = $problemModel->getBookmarkedProblems();
+
+        // Panggil file halaman bookmark baru yang akan kita buat di Langkah 6
+        require_once '../app/views/bookmark.php'; 
     }
     // public function show(string $id):void{
     //         $id = intval($id);
