@@ -24,6 +24,7 @@ $router->add("POST", "/register", "AuthController", "registerView");
 
 $router->add("GET", "/problem-detail", "LandingController", "detailView");
 $router->add("GET", "/detail", "ProblemDetailController", "detailView");
+$router->add("POST", "/add-comment", "LandingController", "postComment");
 
 // Tambahkan ini di index.php bersama rute lainnya
 $router->add("POST", "/toggle-bookmark", "LandingController", "toggleBookmark");

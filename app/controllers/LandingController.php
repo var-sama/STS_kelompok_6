@@ -45,8 +45,8 @@ class LandingController
 
         require_once '../app/views/landing.php'; // Sesuaikan dengan path file kamu
     }
-   public function detailView() {
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
+    public function detailView() {
+        $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
         if (!$id) {
             header('Location: /');
@@ -55,17 +55,41 @@ class LandingController
 
         $problemModel = new Problem();
         $problem = $problemModel->getProblemById($id); 
+        
+        // --- TAMBAHAN BARU: Ambil semua komentar untuk masalah ini ---
+        $comments = $problemModel->getCommentsByProblemId($id); 
 
         if (!$problem) {
-            // Kalau datanya false (entah karena ID gak ada atau kena Catch Exception di model)
             echo "Data tidak ditemukan atau terjadi masalah."; 
             exit;
         }
         
-        $data = ['problem' => $problem];
+        // Kirim variabel $comments ke view juga
+        $data = [
+            'problem' => $problem,
+            'comments' => $comments
+        ];
         extract($data);
 
         require_once '../app/views/detail.php';
+    }
+
+    // --- FUNGSI BARU: Untuk menyimpan komentar dari Form ---
+    public function postComment() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $problem_id = isset($_POST['problem_id']) ? intval($_POST['problem_id']) : 0;
+            $content = isset($_POST['content']) ? trim($_POST['content']) : '';
+
+            if ($problem_id > 0 && !empty($content)) {
+                $problemModel = new Problem();
+                // Simpan ke database dengan htmlspecialchars untuk keamanan
+                $problemModel->addComment($problem_id, htmlspecialchars($content));
+            }
+            
+            // Redirect otomatis kembali ke halaman detail postingan tersebut
+            header('Location: /problem-detail?id=' . $problem_id);
+            exit;
+        }
     }
 
     public function teamsDetailView()

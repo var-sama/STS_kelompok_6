@@ -78,40 +78,37 @@ class Problem extends Database
     // Contoh untuk PDO
 // Pastikan ada `use Exception;` di bagian paling atas file model-mu
 
-   public function getProblemById($id) 
-    {
-        try {
-            // 1. Ambil koneksi dari class Database induk
-            $connection = $this->getConnection();
-            
-            // 2. Siapkan query (pakai {$this->table} biar rapi)
-            $query = "SELECT * FROM {$this->table} WHERE id = ?";
-            
-            $stmt = $connection->prepare($query);
-            
-            // Kalau prepare gagal, ambil pesan error dari $connection
-            if (!$stmt) {
-                throw new Exception("Gagal prepare query: " . $connection->error);
-            }
-            
-            // "i" berarti integer (karena ID biasanya angka)
-            $stmt->bind_param("i", $id); 
-            $stmt->execute();
-            
-            // Ambil hasilnya
-            $result = $stmt->get_result();
-            
-            // Ambil 1 baris data sebagai array asosiatif
-            $data = $result->fetch_assoc();
-            
-            $stmt->close();
-            
-            return $data;
+    public function getProblemById($id) 
+        {
+            try {
+                $connection = $this->getConnection();
+                
+                // Query diubah: menggunakan LEFT JOIN untuk mendeteksi status bookmark
+                $query = "SELECT p.*, IF(b.id IS NOT NULL, 1, 0) AS is_bookmarked 
+                        FROM {$this->table} p 
+                        LEFT JOIN bookmarks b ON p.id = b.problem_id 
+                        WHERE p.id = ?";
+                
+                $stmt = $connection->prepare($query);
+                
+                if (!$stmt) {
+                    throw new Exception("Gagal prepare query: " . $connection->error);
+                }
+                
+                $stmt->bind_param("i", $id); 
+                $stmt->execute();
+                
+                $result = $stmt->get_result();
+                $data = $result->fetch_assoc();
+                
+                $stmt->close();
+                
+                return $data;
 
-        } catch (Exception $e) {
-            return false;
+            } catch (Exception $e) {
+                return false;
+            }
         }
-    }
 
     // Tambahkan fungsi-fungsi ini di dalam class Problem
 
@@ -183,5 +180,46 @@ class Problem extends Database
         }
         $stmt->close();
         return $problems;
+    }
+
+    // Fungsi untuk menyimpan komentar baru
+    public function addComment($problem_id, $content)
+    {
+        try {
+            $connection = $this->getConnection();
+            $query = "INSERT INTO comments (problem_id, content) VALUES (?, ?)";
+            $stmt = $connection->prepare($query);
+            
+            if (!$stmt) return false;
+            
+            $stmt->bind_param("is", $problem_id, $content);
+            $success = $stmt->execute();
+            $stmt->close();
+            
+            return $success;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    // Fungsi untuk mengambil daftar komentar milik suatu masalah
+    public function getCommentsByProblemId($problem_id)
+    {
+        $comments = [];
+        $connection = $this->getConnection();
+        
+        // Mengurutkan komentar dari yang paling baru (DESC)
+        $query = "SELECT * FROM comments WHERE problem_id = ? ORDER BY created_at DESC";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("i", $problem_id);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $comments[] = $row;
+        }
+        $stmt->close();
+        
+        return $comments;
     }
 }
