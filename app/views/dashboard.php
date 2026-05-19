@@ -21,6 +21,8 @@ foreach ($dbPosts as $row) {
     ];
 }
 
+// Some comment
+
 $queryMessages = "SELECT m.message_text, m.created_at, u.name, u.class, u.image 
                   FROM messages m JOIN users u ON m.user_id = u.id 
                   ORDER BY m.created_at DESC LIMIT 5";
