@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
     </style>
 </head>
 <body>
-    <h1>Ini adalah halaman register</h1>
 
     <form action="/register" method="post">
         <label for="nama">Nama:</label>

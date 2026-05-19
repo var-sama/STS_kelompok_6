@@ -8,8 +8,7 @@
         body { background-color: #f6f7fb; margin: 0; padding: 24px; font-family: sans-serif; }
     </style>
 </head>
-<body>
-    <h1>Ini adalah halaman login</h1>
+<body>  
 
     <form action="/login" method="post">
         <label for="nama">Nama:</label>

@@ -1,0 +1,81 @@
+/* Layout Dasar */
+.prob {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Warna background luar agar card terlihat kontras */
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Posisi card di atas */
+    padding: 40px;
+    margin:20px;
+}
+
+/* Container Card */
+.editor-container {
+    width: 100%;
+    max-width: 1900px; /* Batasi lebar maksimal agar tidak terlalu melar */
+}
+
+.editor-card {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    overflow: hidden; /* Agar footer bar hitam mengikuti radius pojok */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling Input */
+.input-title {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    color: #666;
+}
+
+.input-content {
+    width: 100%;
+    min-height: 50px;
+    padding: 20px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    resize: none;
+    color: #888;
+}
+
+/* Section Tag */
+.tag-section {
+    padding: 15px 20px;
+}
+
+.btn-tag {
+    background-color: #343a40;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-tag:hover {
+    background-color: #495057;
+}
+
+/* Footer Card Hitam */
+.card-footer {
+    background-color: #262d35;
+    color: #aaa;
+    padding: 10px 20px;
+    text-align: right;
+    font-size: 12px;
+}
+

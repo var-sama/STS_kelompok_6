@@ -54,6 +54,17 @@ This website helps students interact without needing face-to-face meetings, maki
 
 5. After login, users can access their dashboard or profile page depending on their role.
 
+### !important 🚧 These features are still under development. 🚧
+To access them, append the following paths to your localhost URL in the browser:
+   ```bash
+    /login            # login page
+    /register         # register page
+    /Problemcreate    # problem create page
+    /analytics        # admin analytics page
+    /problem-detail   # problem detail page
+    /                 # landing page
+   ```
+
 ---
 
 ## Architecture
@@ -64,6 +75,8 @@ STS_KELOMPOK_6/
 │   ├── controllers/
 │   │   ├── AuthController.php          # Handle authentication (login/register)
 │   │   ├── LandingController.php       # Handle landing page logic
+│   │   ├── AnalyticsController.php     # Handle analytics page logic
+│   │   ├── ProblemCreateController.php # Handle problem create page logic
 │   │   └── ProblemDetailController.php # Handle detail discussion/problem page
 │   │
 │   ├── core/
@@ -75,6 +88,8 @@ STS_KELOMPOK_6/
 │           └── register.php            # Register page
 │       ├── components/
 │       │   └── navbar.php              # Reusable navbar component
+│       ├── analytics.php               # Admin analytics page
+│       ├── Problemcreate.php           # Problem create page
 │       ├── detail.php                  # Problem/discussion detail page
 │       └── landing.php                 # Landing page UI
 │
@@ -82,13 +97,16 @@ STS_KELOMPOK_6/
 │   ├── css/
 │   │   ├── detail.css                  # Styling for detail page
 │   │   ├── landing.css                 # Styling for landing page
+│   │   ├── Login.css                   # Styling for login page
+│   │   ├── Problem.css                 # Styling for problem create page
+│   │   ├── Register.css                # Styling for lregister page
 │   │   └── Navbar.css                  # Styling for navbar
 │   │
 │   ├── icons/                          # Icons/assets
 │   └── index.php                       # Entry point (main file)
 │
 ├── .gitignore
-└── README.md
+└── README.md                           # Readme file
 ```
 
 ---

@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
-        * {
+        /* * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        } */
 
         body {
             display: flex;
@@ -21,32 +21,32 @@
             color: #333;
         }
 
-
-        .sidebar {
-            width: 250px;
-            background-color: #272C39;
-            color: white;
+        .layout {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            min-height: 100vh;
         }
 
-        .logo-area {
+        .main-content {
+            flex: 1;
+            padding: 20px 40px;
+        }
+
+        /* .logo-area {
             padding: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
             border-bottom: 1px solid #3A404F;
-        }
+        } */
 
-        .logo-circle {
+        /* .logo-circle {
             width: 30px;
             height: 30px;
             background-color: #ccc;
             border-radius: 50%;
-        }
+        } */
 
-        .nav-menu {
+        /* .nav-menu {
             list-style: none;
             flex-grow: 1;
             padding-top: 20px;
@@ -73,9 +73,9 @@
         
         .nav-item i {
             font-size: 1.2rem;
-        }
+        } */
 
-        .user-profile {
+        /* .user-profile {
             padding: 30px 20px;
             text-align: center;
         }
@@ -88,7 +88,7 @@
         .user-profile p {
             color: #A0A5B1;
             font-size: 0.9rem;
-        }
+        } */
 
     
         .main-content {
@@ -262,7 +262,7 @@
 </head>
 <body>
 
-    <div class="sidebar">
+    <!-- <div class="sidebar">
         <div>
             <div class="logo-area">
                 <div class="logo-circle"></div>
@@ -280,8 +280,9 @@
             <i class="fa-solid fa-circle-user"></i>
             <p>Yachi8000</p>
         </div>
-    </div>
-
+    </div> -->
+<div class="layout">
+    <?php require_once '../app/views/components/navbar.php'; ?>
     <div class="main-content">
         <a href="#" class="top-link"><i class="fa-solid fa-angle-left"></i> Kembali</a>
 
@@ -368,6 +369,6 @@
         </div>
 
     </div>
-
+</div>
 </body>
 </html>

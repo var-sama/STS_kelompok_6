@@ -47,4 +47,12 @@ class ProblemController
             }
         }
     }
+
+    public function TagsView()//ganti nama ini kalo mau anok function lain, nama sesuaiin sama nama function yg mo dibuat, btw tulisan ni hapus ye
+    {
+        require_once '../app/views/Tags.php';
+    }
 }
+
+
+?>
