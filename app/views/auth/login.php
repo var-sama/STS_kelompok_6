@@ -3,45 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/Login.css">
+    <title>Login - WebIn</title>
+    <style>
+        body { background-color: #f6f7fb; margin: 0; padding: 24px; font-family: sans-serif; }
+    </style>
 </head>
 <body>  
 
-<div class="container">
+    <form action="/login" method="post">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br><br>
 
-    <!-- Kiri (Logo) -->
-    <div class="left">
-        <img src="/icons/Register Login.png" class="logo">
-    </div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
 
-    <!-- Kanan (Form) -->
-    <div class="right">
-        <div class="login-box">
-            <h1>Masuk Sebagai Bagian <span>Web-In</span></h1>
+        <button type="submit">Login</button>
+    </form>
 
-            <form action="/login" method="POST">
-                <label>Username</label>
-                <input type="text" name="username" required>
-
-                <label>Password</label>
-                <input type="password" name="password" required>
-                
-
-                <div class="dots">
-                    <img src="/icons/Screenshot_2026-03-22_121911-removebg-preview.png" class="social-img">
-                </div>
-
-                <button type="submit">Login</button>
-                <button type="button">Daftar</button>
-            </form>
-
-            <a href="#" class="forgot">Lupa password?</a>
-        </div>
-    </div>
-
-</div>
-
-<script src="script.js"></script>
+    <a href="/register">Belum punya akun</a>
 </body>
 </html>
