@@ -286,7 +286,7 @@
 <div class="layout">
     <?php require_once '../app/views/components/navbar.php'; ?>
     <div class="main-content">
-        <a href="#" class="top-link"><i class="fa-solid fa-angle-left"></i> Kembali</a>
+        <a href="landing.php" class="top-link"><i class="fa-solid fa-angle-left"></i> Kembali</a>
 
         <div class="header">
             <h1>Analytics</h1>

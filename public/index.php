@@ -23,6 +23,8 @@ $router->add("GET", "/Problemcreate", "ProblemController", "ProblemcreateView");
 // Analytics
 $router->add("GET", "/analytics", "AnalyticsController", "analyticsView");
 
+$router->add("GET", "/dashboard", "DashboardController", "dashboardView");
+
 
 
 

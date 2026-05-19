@@ -22,6 +22,7 @@ body{
     transition: width 0.2s ease;
     flex-shrink:0;
     position: sticky;
+    
 }
  
 main{
