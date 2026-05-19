@@ -15,7 +15,6 @@ protected $connection;
             die("Error");
         }
     }
-
     public function getConnection()
     {
         return $this->connection;
