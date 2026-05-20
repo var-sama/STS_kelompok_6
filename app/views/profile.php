@@ -261,6 +261,105 @@
             color: #00ADB5;
             border-bottom: 3px solid #00ADB5; /* Garis bawah biru */
         }
+    
+        /* === POSTINGAN KARTU STYLES === */
+        .post-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden; /* Agar footer mengikuti border-radius kartu */
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .post-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #d1d1d1; /* Warna abu-abu placeholder */
+            margin-right: 15px;
+        }
+
+        .post-user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 3px;
+        }
+
+        .post-meta {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .post-content {
+            padding: 0 20px 20px 20px;
+            font-size: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3238; /* Warna dark/navy pada footer */
+            padding: 12px 20px;
+            color: #ffffff;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .post-action-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .post-action-btn:hover {
+            color: #00ADB5;
+        }
+
+        .post-footer-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .post-tag {
+            background-color: #15b2b9; /* Warna cyan/teal */
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .post-date {
+            font-size: 14px;
+            color: #ffffff;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -322,14 +421,111 @@
             </div>
 
             <div id="Postingan" class="tab-content" style="display: none; margin-top: 30px;">
-                <h3 style="color: #555;">Belum ada postingan saat ini.</h3>
+                
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar"></div>
+                        <div class="post-user-info">
+                            <div class="post-name">GPU</div>
+                            <div class="post-meta">XI TKJ 2</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Masalah pertama: browser error saat runtime.
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <button class="post-action-btn"><i class="fa-regular fa-thumbs-up"></i> Like</button>
+                            <button class="post-action-btn"><i class="fa-solid fa-share"></i> Share</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-bookmark"></i> Bookmark</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-comment"></i> Comment</button>
+                        </div>
+                        <div class="post-footer-right">
+                            <span class="post-tag">IPA</span>
+                            <span class="post-tag">XI TKJ 2</span>
+                            <span class="post-date">February 30th, 2067</span>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar"></div> 
+                        <div class="post-user-info">
+                            <div class="post-name">RAM Memory</div>
+                            <div class="post-meta">XII RPL 1</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Apakah ada yang tahu cara mengatasi memory leak pada aplikasi berbasis Node.js? Server saya sering crash setelah beberapa jam aktif.
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <button class="post-action-btn"><i class="fa-regular fa-thumbs-up"></i> Like</button>
+                            <button class="post-action-btn"><i class="fa-solid fa-share"></i> Share</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-bookmark"></i> Bookmark</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-comment"></i> Comment</button>
+                        </div>
+                        <div class="post-footer-right">
+                            <span class="post-tag">Programming</span>
+                            <span class="post-tag">Server</span>
+                            <span class="post-date">May 20th, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             
             
 
             <div id="Suka" class="tab-content" style="display: none; margin-top: 30px;">
-                <h3 style="color: #555;">Belum ada aktivitas suka saat ini.</h3>
+                
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar"></div>
+                        <div class="post-user-info">
+                            <div class="post-name">CPU Core</div>
+                            <div class="post-meta">X TKJ 1</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Akhirnya berhasil melakukan konfigurasi router Mikrotik untuk lab komputer sekolah! Jaringan lebih stabil sekarang. 🚀
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <button class="post-action-btn" style="color: #00ADB5;"><i class="fa-solid fa-thumbs-up"></i> Liked</button>
+                            <button class="post-action-btn"><i class="fa-solid fa-share"></i> Share</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-bookmark"></i> Bookmark</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-comment"></i> Comment</button>
+                        </div>
+                        <div class="post-footer-right">
+                            <span class="post-tag">Jaringan</span>
+                            <span class="post-tag">Mikrotik</span>
+                            <span class="post-date">May 18th, 2026</span>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar"></div> 
+                        <div class="post-user-info">
+                            <div class="post-name">Motherboard</div>
+                            <div class="post-meta">Guru Pembimbing</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Pengingat untuk kelas XI TKJ 2: Batas waktu pengumpulan laporan praktikum perakitan PC adalah hari Jumat minggu ini. Harap kumpulkan dalam format PDF.
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <button class="post-action-btn" style="color: #00ADB5;"><i class="fa-solid fa-thumbs-up"></i> Liked</button>
+                            <button class="post-action-btn"><i class="fa-solid fa-share"></i> Share</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-bookmark"></i> Bookmark</button>
+                            <button class="post-action-btn"><i class="fa-regular fa-comment"></i> Comment</button>
+                        </div>
+                        <div class="post-footer-right">
+                            <span class="post-tag">Pengumuman</span>
 
           <script>
         function bukaTab(evt, namaTab) {
