@@ -24,6 +24,10 @@ $router->add("GET", "/Problemcreate", "ProblemController", "ProblemcreateView");
 $router->add("GET", "/analytics", "AnalyticsController", "analyticsView");
 // Analytics
 $router->add("GET", "/tags", "ProblemController", "TagsView");
+// Profile
+$router->add("GET", "/profile", "profileController", "profileView");
+
+
 
 
 
