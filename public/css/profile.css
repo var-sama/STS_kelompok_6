@@ -1,0 +1,182 @@
+.profile-wrapper {
+    flex: 1; /* PENTING: Ini yang membuatnya mengisi sisa layar di kanan sidebar */
+    background-color: #ffffff; 
+    padding: 40px;
+    height: 100vh;
+    overflow-y: auto; /* Bisa di-scroll kalau konten panjang */
+    box-sizing: border-box;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.profile-left-section {
+    display: flex;
+    gap: 20px;
+}
+
+.profile-wrapper .avatar {
+    font-size: 100px;
+    color: #000;
+}
+
+.user-info h1 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #000;
+}
+
+.user-info h1 i {
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+}
+
+.user-info .handle {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.user-info .school {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-actions i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+}
+
+.btn-headline {
+    background-color: #c4c4c4;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #000;
+}
+
+.reminder-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.reminder-section i {
+    font-size: 20px;
+}
+
+/* Tabs */
+.profile-wrapper .tabs {
+    display: flex;
+    gap: 30px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.profile-wrapper .tab-item {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.profile-wrapper .tab-item.active {
+    color: #0088cc;
+    border-bottom: 3px solid #0088cc;
+}
+
+/* Status Box */
+.status-box {
+    background-color: #f8f9fa;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.status-box .fa-check-circle {
+    font-size: 20px;
+    margin-top: 2px;
+}
+
+.status-content h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.status-content p {
+    font-size: 13px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.status-content .timezone {
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+/* Contact Information */
+.contact-section h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.contact-grid {
+    display: flex;
+    justify-content: flex-start;
+    gap: 100px;
+    max-width: 800px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.contact-item i {
+    font-size: 24px;
+    color: #000;
+}
+
+.contact-text h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: #000;
+    font-weight: bold;
+}
+
+.contact-text a, .contact-text span {
+    font-size: 13px;
+    color: #0088cc;
+    text-decoration: none;
+}
