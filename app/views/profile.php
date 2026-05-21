@@ -31,9 +31,10 @@
                         </div>
                     </div>
                     
-                    <div class="flex items-center gap-[10px] font-bold text-[14px] cursor-pointer">
-                        <span>Set Reminder</span>
-                    </div>
+                    <a href="/logout" onclick="return confirm('Apakah Anda yakin ingin keluar dari akun?');" class="flex items-center gap-[6px] font-bold text-[14px] text-red-500 hover:text-red-700 transition-colors cursor-pointer no-underline">
+                        <i class="ti ti-logout text-[18px]"></i>
+                        <span>Log Out</span>
+                    </a>
                 </div>
 
                 <div class="flex items-center gap-[25px] py-4">
@@ -71,7 +72,7 @@
                     </div>
                 </div>
 
-                <div id="Postingan" class="tab-content mt-[30px] flex flex-col gap-[55px] hidden">
+                <div id="Postingan" class="tab-content mt-[30px] flex flex-col gap-[15px] hidden">
                     <div class="bg-white border border-[#EEEEEE] rounded-[10px] shadow-[0_1px_6px_rgba(0,0,0,0.08)] overflow-hidden h-[170px] box-border flex flex-col mx-auto justify-between w-full max-w-[1200px] transition duration-200 hover:scale-[1.03] hover:shadow-[0_1px_6px_rgba(0,0,0,0.2)]">
                         <div onclick="window.location.href='/problem-detail'" style="cursor: pointer;">
                             <div class="flex items-center gap-[12px] p-[12px]">
@@ -137,7 +138,7 @@
                                     <button class="bg-transparent text-[#EEEEEE] font-semibold p-0 m-0 text-[13px] cursor-pointer inline-flex items-center gap-[5px] border-none group hover:text-[#00ADB5]">
                                         <iconify-icon icon="mdi:like-outline" class="text-[20px] w-[20px] h-[20px] text-[#eeeeee] group-hover:text-[#00ADB5] align-middle"></iconify-icon>Like
                                     </button>
-                                </span>
+                                endspan
                                 <span class="text-[13px] text-white m-0 p-0">
                                     <button class="bg-transparent text-[#EEEEEE] font-semibold p-0 m-0 text-[13px] cursor-pointer inline-flex items-center gap-[5px] border-none group hover:text-[#00ADB5]">
                                         <iconify-icon icon="mdi:share" class="text-[20px] w-[20px] h-[20px] text-[#eeeeee] group-hover:text-[#00ADB5] align-middle"></iconify-icon>Share
@@ -220,7 +221,6 @@
     function bukaTab(evt, namaTab) {
         let tabcontent = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabcontent.length; i++) {
-            // Sembunyikan semua tab dengan menambahkan class 'hidden'
             tabcontent[i].classList.add("hidden");
         }
 
@@ -229,7 +229,6 @@
             tablinks[i].classList.remove("active");
         }
 
-        // Tampilkan tab yang dipilih dengan menghapus class 'hidden'
         document.getElementById(namaTab).classList.remove("hidden");
         evt.currentTarget.classList.add("active");
     }

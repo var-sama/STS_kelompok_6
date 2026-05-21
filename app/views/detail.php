@@ -59,10 +59,20 @@
                                     </button>
                                 </span>
                             </div>
-                            <div class="flex gap-2 items-center">
-                                <span class="bg-[#19b3b3] px-2 py-[3px] rounded-full text-xs text-white">IPA</span>
-                                <span class="bg-[#19b3b3] px-2 py-[3px] rounded-full text-xs text-white">XI TKJ 2</span>
-                                <span class="text-xs text-[#BABCC1] italic"><?= isset($problem['created_at']) ? date('d M Y', strtotime($problem['created_at'])) : '' ?></span>
+                            <div class="flex gap-[8px] items-center text-white flex-wrap">
+                                        <?php if (!empty($problem['tags']) && is_array($problem['tags'])): ?>
+                                            <?php foreach ($problem['tags'] as $tagName): ?>
+                                                <span class="bg-[#19b3b3] p-[3px_8px] rounded-[10px] text-[12px]">
+                                                    <?= htmlspecialchars($tagName) ?>
+                                                </span>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <span class="bg-gray-500 p-[3px_8px] rounded-[10px] text-[12px]">Umum</span>
+                                        <?php endif; ?>
+
+                                        <span class="text-[12px] opacity-70 font-sans italic ml-1">
+                                            <?= isset($problem['created_at']) ? date('d M Y', strtotime($problem['created_at'])) : 'Unknown Date' ?>
+                                        </span>
                             </div>
                         </div>
                         

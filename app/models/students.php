@@ -11,24 +11,51 @@ class Problem extends Database
     protected $table = 'problems'; 
 
     // UBAH FUNGSI saveProblem MENJADI SEPERTI INI:
-    public function saveProblem($title, $description, $team_id = null)
+    public function saveProblem($title, $description, $tag_ids = [], $team_id = null)
     {
+        $connection = $this->getConnection();
+        
         try {
-            $connection = $this->getConnection();
-            
-            // Tambahkan team_id ke dalam query insert
+            // Mulai transaksi database
+            $connection->begin_transaction();
+
+            // 1. Insert data ke tabel 'problems'
             $query = "INSERT INTO {$this->table} (title, description, team_id, created_at) VALUES (?, ?, ?, NOW())";
             $stmt = $connection->prepare($query);
 
-            if (!$stmt) return false;
+            if (!$stmt) throw new Exception("Gagal prepare statement problems");
 
-            // 'ssi' berarti String, String, Integer
             $stmt->bind_param('ssi', $title, $description, $team_id);
             $success = $stmt->execute();
+            
+            if (!$success) throw new Exception("Gagal simpan data ke tabel problems");
+            
+            // 2. Ambil ID problem yang baru saja tersimpan
+            $problem_id = $connection->insert_id;
             $stmt->close();
 
-            return $success;
+            // 3. Jika ada tag yang dipilih, masukkan ke tabel pivot 'problem_tags'
+            if (!empty($tag_ids) && is_array($tag_ids)) {
+                $tag_query = "INSERT INTO problem_tags (problem_id, tag_id) VALUES (?, ?)";
+                $tag_stmt = $connection->prepare($tag_query);
+                
+                if (!$tag_stmt) throw new Exception("Gagal prepare statement problem_tags");
+
+                foreach ($tag_ids as $tag_id) {
+                    $tag_id = (int)$tag_id; // Pastikan berupa integer
+                    $tag_stmt->bind_param('ii', $problem_id, $tag_id);
+                    $tag_stmt->execute();
+                }
+                $tag_stmt->close();
+            }
+
+            // Jika semua query sukses, commit/simpan permanen ke database
+            $connection->commit();
+            return true;
+
         } catch (Exception $e) {
+            // Jika ada yang gagal, batalkan semua perubahan data
+            $connection->rollback();
             return false;
         }
     }
@@ -144,22 +171,37 @@ class Problem extends Database
         }
     }
 
-    // Fungsi untuk mengambil semua data masalah beserta status bookmark-nya (untuk Landing Page)
+   // Fungsi untuk mengambil semua data masalah beserta status bookmark & TAG-nya (untuk Landing Page)
     public function getAllProblemsWithBookmarkStatus()
     {
         $problems = [];
         $connection = $this->getConnection();
-        $query = "SELECT p.*, IF(b.id IS NOT NULL, 1, 0) AS is_bookmarked 
-                FROM problems p 
-                LEFT JOIN bookmarks b ON p.id = b.problem_id 
-                ORDER BY p.id DESC";
+        
+        // Kita menggunakan GROUP_CONCAT untuk menggabungkan nama-nama tag menjadi satu string yang dipisahkan koma
+        $query = "
+            SELECT 
+                p.*, 
+                IF(b.id IS NOT NULL, 1, 0) AS is_bookmarked,
+                GROUP_CONCAT(t.name SEPARATOR ',') AS tags_list
+            FROM problems p 
+            LEFT JOIN bookmarks b ON p.id = b.problem_id 
+            LEFT JOIN problem_tags pt ON p.id = pt.problem_id
+            LEFT JOIN tags t ON pt.tag_id = t.id
+            GROUP BY p.id
+            ORDER BY p.id DESC
+        ";
+        
         $stmt = $connection->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
+        
         while ($row = $result->fetch_assoc()) {
+            // Ubah string "Tag1,Tag2" menjadi Array PHP, jika tidak ada tag, buat jadi array kosong
+            $row['tags'] = !empty($row['tags_list']) ? explode(',', $row['tags_list']) : [];
             $problems[] = $row;
         }
         $stmt->close();
+        
         return $problems;
     }
 

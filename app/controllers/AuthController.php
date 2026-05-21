@@ -80,5 +80,31 @@ public function registerView()
     
     require_once '../app/views/auth/register.php';
 }
+// Fungsi untuk memproses Logout
+    public function logout() {
+        // 1. Pastikan session dimulai terlebih dahulu
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // 2. Bersihkan seluruh variabel data session
+        $_SESSION = array();
+
+        // 3. Hancurkan data session cookie yang ada di browser (opsional tapi disarankan)
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+
+        // 4. Hancurkan session yang tersimpan di server
+        session_destroy();
+
+        // 5. Alihkan user kembali ke halaman login atau homepage
+        header("Location: /login");
+        exit;
+    }   
 }
 ?>

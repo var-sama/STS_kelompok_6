@@ -37,8 +37,8 @@
             <div class="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-3 w-full">
                 <?php for($i=0; $i<1; $i++): ?>
                     <a href="" class="block w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center no-underline cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TKJ</a>
-                    <a href="" class="block w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center no-underline cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TKJ</a>
-                    <a href="" class="block w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center no-underline cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TKJ</a>
+                    <a href="" class="block w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center no-underline cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">AKL</a>
+                    <a href="" class="block w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center no-underline cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">BID</a>
                 <?php endfor; ?>
             </div>
         </div>
@@ -47,7 +47,19 @@
             <h3 class="text-[14px] font-bold text-black">Materi</h3>
             <div class="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-3 w-full">
                 <?php for($i=0; $i<1; $i++): ?>
-                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">IPA</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 1</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 2</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 3</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 4</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 5</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 6</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 7</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 8</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 9</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 10</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 11</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 12</button>
+                    <button class="w-full bg-[#00a8a8] text-white py-2 rounded-[20px] text-[13px] text-center border-none cursor-pointer transition-colors duration-200 hover:bg-[#008b8b]">TP 13</button>
                 <?php endfor; ?>
             </div>
         </div>

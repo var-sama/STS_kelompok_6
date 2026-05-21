@@ -44,6 +44,7 @@ $router->add('DELETE', '/teams/{id}', 'LandingController', 'delete');
 $router->add("GET", "/tags", "ProblemController", "TagsView");
 // Profile
 $router->add("GET", "/profile", "profileController", "profileView");
+$router->add("GET", "/logout", "AuthController", "logout");
 
 
 

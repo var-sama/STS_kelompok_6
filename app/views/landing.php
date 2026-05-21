@@ -91,9 +91,18 @@
                                             </button>
                                         </span>
                                     </div>
-                                    <div class="flex gap-[8px] items-center text-white">
-                                        <span class="bg-[#19b3b3] p-[3px_8px] rounded-[10px] text-[12px]">Problem</span>
-                                        <span class="text-[12px] opacity-70 font-sans italic">
+                                    <div class="flex gap-[8px] items-center text-white flex-wrap">
+                                        <?php if (!empty($problem['tags']) && is_array($problem['tags'])): ?>
+                                            <?php foreach ($problem['tags'] as $tagName): ?>
+                                                <span class="bg-[#19b3b3] p-[3px_8px] rounded-[10px] text-[12px]">
+                                                    <?= htmlspecialchars($tagName) ?>
+                                                </span>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <span class="bg-gray-500 p-[3px_8px] rounded-[10px] text-[12px]">Umum</span>
+                                        <?php endif; ?>
+
+                                        <span class="text-[12px] opacity-70 font-sans italic ml-1">
                                             <?= isset($problem['created_at']) ? date('d M Y', strtotime($problem['created_at'])) : 'Unknown Date' ?>
                                         </span>
                                     </div>
