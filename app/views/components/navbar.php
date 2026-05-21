@@ -43,7 +43,7 @@
         <iconify-icon icon="material-symbols:bookmark" class="w-[70px] shrink-0 flex justify-center items-center text-[30px] transition-all duration-200"></iconify-icon>
         <span class="opacity-0 max-w-0 overflow-hidden transition-[opacity,transform] duration-200 ease-in-out font-semibold text-[16px] ml-[5px]">Bookmark</span>
     </a>
-    <a href="#" class="text-[#cfd8dc] no-underline flex items-center h-[50px] w-full transition-all duration-200 ease-in-out whitespace-nowrap">
+    <a href="/profile" class="text-[#cfd8dc] no-underline flex items-center h-[50px] w-full transition-all duration-200 ease-in-out whitespace-nowrap">
         <iconify-icon icon="mingcute:user-4-line" class="w-[70px] shrink-0 flex justify-center items-center text-[30px] transition-all duration-200"></iconify-icon>
         <span class="opacity-0 max-w-0 overflow-hidden transition-[opacity,transform] duration-200 ease-in-out font-semibold text-[16px] ml-[5px]">Profile</span>
     </a>
