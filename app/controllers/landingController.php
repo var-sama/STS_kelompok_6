@@ -40,10 +40,19 @@ class LandingController
 
     public function landingView() {
         $problemModel = new Problem();
-        // Pakai method baru ini agar status bookmark terdeteksi saat halaman dimuat
-        $problems = $problemModel->getAllProblemsWithBookmarkStatus(); 
+        
+        // Tangkap input 'search' dari URL via method GET
+        $keyword = isset($_GET['search']) ? trim($_GET['search']) : ''; 
 
-        require_once '../app/views/landing.php'; // Sesuaikan dengan path file kamu
+        if (!empty($keyword)) {
+            // Jika user sedang mencari sesuatu, jalankan fungsi search
+            $problems = $problemModel->searchProblemsWithBookmarkStatus($keyword);
+        } else {
+            // Jika kosong, tampilkan semua seperti biasa
+            $problems = $problemModel->getAllProblemsWithBookmarkStatus(); 
+        }
+
+        require_once '../app/views/landing.php'; 
     }
     public function detailView() {
         $id = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -214,6 +223,17 @@ class LandingController
     public function bookmarkView() {
         $problemModel = new Problem();
         $problems = $problemModel->getBookmarkedProblems();
+        
+        // Tangkap input 'search' dari URL via method GET
+        $keyword = isset($_GET['search']) ? trim($_GET['search']) : ''; 
+
+        if (!empty($keyword)) {
+            // Jika user sedang mencari sesuatu, jalankan fungsi search
+            $problems = $problemModel->searchProblemsWithBookmarkStatus($keyword);
+        } else {
+            // Jika kosong, tampilkan semua seperti biasa
+            $problems = $problemModel->getBookmarkedProblems();
+        }
 
         // Panggil file halaman bookmark baru yang akan kita buat di Langkah 6
         require_once '../app/views/bookmark.php'; 

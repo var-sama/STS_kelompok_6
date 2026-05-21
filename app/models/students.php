@@ -222,4 +222,32 @@ class Problem extends Database
         
         return $comments;
     }
+
+    // --- FUNGSI BARU: Untuk mencari masalah berdasarkan keyword ---
+    public function searchProblemsWithBookmarkStatus($keyword)
+    {
+        $problems = [];
+        $connection = $this->getConnection();
+        
+        // Mencari di kolom 'title' atau 'description' yang mirip dengan keyword
+        $query = "SELECT p.*, IF(b.id IS NOT NULL, 1, 0) AS is_bookmarked 
+                  FROM problems p 
+                  LEFT JOIN bookmarks b ON p.id = b.problem_id 
+                  WHERE p.title LIKE ? OR p.description LIKE ?
+                  ORDER BY p.id DESC";
+                  
+        $stmt = $connection->prepare($query);
+        
+        // Tambahkan % di awal dan akhir keyword agar pencarian lebih fleksibel
+        $searchKeyword = "%" . $keyword . "%";
+        $stmt->bind_param("ss", $searchKeyword, $searchKeyword);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        while ($row = $result->fetch_assoc()) {
+            $problems[] = $row;
+        }
+        $stmt->close();
+        return $problems;
+    }
 }

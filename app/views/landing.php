@@ -36,11 +36,12 @@
         
         <main class="flex flex-col flex-1 h-screen p-0 m-0 box-border relative">
             
+        <form method="GET" action="" class="w-full">
             <div class="w-full flex justify-center items-center relative bg-[#222831] text-white p-[15px_20px] mb-[15px] shadow-[0_1px_6px_rgba(0,0,0,0.06)] box-border">
                 <iconify-icon icon="material-symbols:search" class="absolute left-[30px] top-[45%] -translate-y-1/2 text-[#222831] text-[32px] pointer-events-none w-[24px] h-[24px] align-middle"></iconify-icon>
-                <input type="text" placeholder="Cari masalah" class="w-full border border-white rounded-[30px] p-[10px_10px_10px_52px] bg-white text-[#111] outline-none box-border">
+                <input type="text" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" placeholder="Cari masalah lalu" class="w-full border border-white rounded-[30px] p-[10px_10px_10px_52px] bg-white text-[#111] outline-none box-border">
             </div>
-
+        </form>
             <div class="post-scroll flex-1 px-[20px] -mt-[15px] overflow-y-auto box-border w-full max-w-full m-0">
                 <div class="flex flex-col gap-[15px] m-0 pt-[20px] pb-[15px]">
                     
