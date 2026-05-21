@@ -38,7 +38,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
         }
 
         .profile-left-section {
@@ -49,6 +49,8 @@
         .profile-wrapper .avatar {
             font-size: 100px;
             color: #000;
+            margin-bottom: 10px;
+            margin-top: 20px;
         }
 
         .user-info h1 {
@@ -56,7 +58,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 5px;
+            margin-bottom: 1px;
             font-weight: bold;
             color: #000;
         }
