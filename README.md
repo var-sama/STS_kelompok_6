@@ -143,5 +143,5 @@ You are free to use, modify, and redistribute it as long as proper credit is giv
 ## Team Members
 1. Gervasio Velasques
 2. Edwin Jonathan
-3. Michael Leonardo
+3. Michael Leo Nardo
 4. Willyansen Alexander Jonathan
