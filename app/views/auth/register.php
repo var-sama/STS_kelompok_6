@@ -1,51 +1,48 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link rel="stylesheet" href="/css/Login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - WebIn</title>
+    <style>
+        body { background-color: #f6f7fb; margin: 0; padding: 24px; font-family: sans-serif; }
+    </style>
 </head>
 <body>
 
-<div class="container">
+    <form action="/register" method="post">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br><br>
 
-    <!-- Kiri (Logo) -->
-    <div class="left">
-        <img src="/icons/Register Login.png" class="logo">
-    </div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
 
-    <!-- Kanan (Form) -->
-    <div class="right">
-        <div class="login-box">
-            <h1>Daftar Menjadi Bagian <span>Web-In</span></h1>
+        <label for="confirm">Konfirmasi Password:</label>
+        <input type="password" id="confirm" name="confirm" required><br><br>
 
-            <form>
-                <label>Username</label>
-                <input type="text" required>
+        <label for="kelas">Kelas:</label>
+        <select id="kelas" name="kelas" required>
+            <option value="">Pilih Kelas</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
 
-                <label>Kelas</label>
-                <select>
-                    <option>X</option>
-                    <option>XI</option>
-                    <option>XII</option>
-                </select>
+        <label for="jurusan">Jurusan:</label>
+        <select id="jurusan" name="jurusan" required>
+            <option value="">Pilih Jurusan</option>
+            <option value="TKJ 1">TKJ 1</option>
+            <option value="TKJ 2">TKJ 2</option>
+            <option value="TKJ 3">TKJ 3</option>
+            <option value="AKL 1">AKL 1</option>
+            <option value="AKL 2">AKL 2</option>
+            <option value="BID 1">BID 1</option>
+            <option value="BID 2">BID 2</option>
+        </select><br><br>
 
-                <label>Password</label>
-                <input type="password" required>
+        <button type="submit">Register</button>
+    </form>
 
-                <div class="dots">
-                    <img src="/icons/Screenshot_2026-03-22_121911-removebg-preview.png" class="social-img">
-                </div>
-
-        
-
-                <button type="submit">Masuk</button>
-            </form>
-
-        </div>
-    </div>
-
-</div>
-
+    <a href="/login">Sudah Punya Akun</a>
 </body>
 </html>

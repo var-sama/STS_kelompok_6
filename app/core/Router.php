@@ -1,52 +1,49 @@
 <?php
+namespace App\core;
 
-namespace App\Core;
-
-use App\Controllers\StudentController;
-
-class Router
-{
-    private array $routes = [];
-
-    public function add(string $method, string $uri, string $controller, string $function)
-    {
-        $this->routes[] = [
-            'method' => $method,
-            'uri' => $uri,
-            'controller' => $controller,
-            'function' => $function,
-        ];
+class router
+{ 
+    private array $routes=[];
+    public function add(string $method, string $uri, string $controller, string $function): void{
+        $this->routes[]=[
+            'method'=>$method,
+            'uri'=>$uri,
+            'controller'=>$controller,
+            'function'=>$function
+        ];        
     }
-
-    public function run()
+    public function run(): void
     {
         $method = $_SERVER['REQUEST_METHOD'];
+        if($method === 'POST' && isset($_POST['_method'])){
+            $method = strtoupper($_POST['_method']);
+        }
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        foreach ($this->routes as $route) {
+        foreach($this->routes as $route){
+            if($method !== $route['method']) {
+                continue;
+            }
             $pattern = str_replace(
-                '{id}',
-                '([0-9]+)',
-                $route['uri']
+                '{id}','([0-9]+)',$route['uri']
             );
+            $pattern= "#^". $pattern . "$#";
+            if($method === $route['method'] && preg_match($pattern, $uri, $matches)){
+                 require_once '../app/controllers/' . $route['controller'] . '.php';
+                 array_shift($matches);
+                 $controllerClass = 'App\\controllers\\' . $route['controller'];
+                 $controller = new $controllerClass();
 
-            $pattern = '#^' . $pattern . '$#';
+                 $function = $route['function'];
+                 call_user_func_array([$controller, $function], $matches);
 
-            if (preg_match($pattern, $uri, $matches)) {
-                require_once '../app/controllers/' . $route['controller'] . '.php';
-                array_shift($matches);
-                $controllerClass = 'App\\Controllers\\' . $route['controller'];
-                $controller = new $controllerClass();
-
-                $function = $route['function'];
-                call_user_func_array([$controller, $function], $matches);
-
-                return;
+                 return;
             }
         }
-
+       
         http_response_code(404);
-        echo '<h1>404 - Page Not Found</h1>';
+        echo "<h1>404 - page not found</h1>";
     }
 
 }
+?>
