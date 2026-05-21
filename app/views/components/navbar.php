@@ -31,7 +31,7 @@
         <iconify-icon icon="lucide:home" class="w-[70px] shrink-0 flex justify-center items-center text-[30px] transition-all duration-200"></iconify-icon>
         <span class="opacity-0 max-w-0 overflow-hidden transition-[opacity,transform] duration-200 ease-in-out font-semibold text-[16px] ml-[5px]">Homepage</span>
     </a>
-    <a href="#" class="text-[#cfd8dc] no-underline flex items-center h-[50px] w-full transition-all duration-200 ease-in-out whitespace-nowrap">
+    <a href="/tags" class="text-[#cfd8dc] no-underline flex items-center h-[50px] w-full transition-all duration-200 ease-in-out whitespace-nowrap">
         <iconify-icon icon="mingcute:tag-line" class="w-[70px] shrink-0 flex justify-center items-center text-[30px] transition-all duration-200"></iconify-icon>
         <span class="opacity-0 max-w-0 overflow-hidden transition-[opacity,transform] duration-200 ease-in-out font-semibold text-[16px] ml-[5px]">Tag</span>
     </a>

@@ -3,14 +3,12 @@ namespace App\Controllers;
 
 use App\Core\Database;
 
-// Jika kamu TIDAK pakai Composer/Autoloader, uncomment baris di bawah dan sesuaikan lokasinya:
-require_once __DIR__ . '/../core/database.php'; 
+require_once '../app/core/database.php'; 
 
 class AuthController
 {
     public function loginView()
     {
-        // 1. Proses data POST terlebih dahulu
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $database = new Database();
             $connection = $database->getConnection();
@@ -36,13 +34,11 @@ class AuthController
             }
         }
         
-        // 2. Jika bukan POST (hanya buka halaman), baru load View-nya
-        require_once __DIR__ . '/../views/auth/login.php';
+        require_once '../app/views/auth/login.php';
     }
 
 public function registerView()
 {
-    // 1. Proses data POST terlebih dahulu
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Database(); 
         $connection = $database->getConnection();
@@ -67,13 +63,10 @@ public function registerView()
         
         // Bikin format tanggal dan waktu sekarang (Tahun-Bulan-Hari Jam:Menit:Detik)
         $tanggal = date('Y-m-d H:i:s'); 
-        // ------------------------------
 
-        // Tambahkan kolom 'tanggal' di query INSERT dan tambah satu tanda tanya (?)
         $query = "INSERT INTO akun_users (nama, password, kelas, date) VALUES (?, ?, ?, ?)";
         $stmt = $connection->prepare($query);
         
-        // Ubah 'sss' menjadi 'ssss' karena sekarang ada 4 variabel string yang dimasukkan
         $stmt->bind_param('ssss', $nama, $hashed, $kelas_full, $tanggal);
         
         if($stmt->execute()) {
@@ -85,8 +78,7 @@ public function registerView()
         }
     }
     
-    // 2. Jika bukan POST (hanya buka halaman), baru load View-nya
-    require_once __DIR__ . '/../views/auth/register.php';
+    require_once '../app/views/auth/register.php';
 }
 }
 ?>

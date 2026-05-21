@@ -34,11 +34,12 @@ $router->add("GET", "/Problemcreate", "ProblemController", "ProblemcreateView");
 $router->add("POST", "/Problemcreate", "ProblemController", "store");
 // Analytics
 $router->add("GET", "/analytics", "AnalyticsController", "analyticsView");
+// Teams
 $router->add("GET", "/teams", "LandingController", "teamsView");
 $router->add("GET", "/teams-detail", "LandingController", "teamsDetailView");
 $router->add("GET", "/teams-create", "LandingController", "teamsCreateView");
 $router->add("POST", "/teams-store", "LandingController", "storeTeam");
-$router->add('DELETE', '/teams/{id}', 'TeamController', 'delete');
+$router->add('DELETE', '/teams/{id}', 'LandingController', 'delete');
 // Analytics
 $router->add("GET", "/tags", "ProblemController", "TagsView");
 
