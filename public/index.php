@@ -41,6 +41,10 @@ $router->add("POST", "/teams-store", "LandingController", "storeTeam");
 $router->add('DELETE', '/teams/{id}', 'TeamController', 'delete');
 // Analytics
 $router->add("GET", "/tags", "ProblemController", "TagsView");
+// Profile
+$router->add("GET", "/profile", "profileController", "profileView");
+
+
 
 $router->add("GET", "/dashboard", "DashboardController", "dashboardView");
 
