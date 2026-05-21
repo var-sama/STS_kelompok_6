@@ -42,6 +42,8 @@ $router->add('DELETE', '/teams/{id}', 'TeamController', 'delete');
 // Analytics
 $router->add("GET", "/tags", "ProblemController", "TagsView");
 
+$router->add("GET", "/dashboard", "DashboardController", "dashboardView");
+
 
 
 
